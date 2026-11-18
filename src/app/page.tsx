@@ -8,6 +8,7 @@ import { Hero } from "@/components/home/Hero";
 import { IndustryDomains } from "@/components/home/IndustryDomains";
 import { OurServices } from "@/components/home/OurServices";
 import { ProjectsDelivered } from "@/components/home/ProjectsDelivered";
+import { TechMarquee } from "@/components/home/TechMarquee";
 import { TrustProof } from "@/components/home/TrustProof";
 import {
   getOrganizationSameAs,
@@ -116,6 +117,7 @@ export default function Home() {
       <IndustryDomains />
       <OurServices />
       <AiNative />
+      <TechMarquee />
       <TrustProof />
       <ProjectsDelivered />
       <ClientStories />

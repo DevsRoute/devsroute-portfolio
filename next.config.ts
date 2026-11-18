@@ -5,7 +5,7 @@ const isDev = process.env.NODE_ENV !== "production";
 /**
  * Content-Security-Policy — allow-list only the origins this site actually uses:
  *  - plausible.io / Google Tag Manager + GA (optional analytics, see Analytics.tsx)
- *  - cdn.simpleicons.org (tech-stack logos)
+ *  - cdn.simpleicons.org + cdn.jsdelivr.net/gh/devicons (tech-stack logos)
  * Fonts are self-hosted by next/font, so no external font origins are needed.
  * 'unsafe-inline' for scripts is required by Next.js inline hydration scripts on
  * statically rendered pages (a nonce-based CSP would force every page dynamic).
@@ -15,7 +15,7 @@ const csp = [
   "default-src 'self'",
   `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""} https://plausible.io https://www.googletagmanager.com`,
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob: https://cdn.simpleicons.org https://www.googletagmanager.com https://*.google-analytics.com",
+  "img-src 'self' data: blob: https://cdn.simpleicons.org https://cdn.jsdelivr.net https://www.googletagmanager.com https://*.google-analytics.com",
   "font-src 'self' data:",
   "connect-src 'self' https://plausible.io https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com",
   "frame-src 'none'",

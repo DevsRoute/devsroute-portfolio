@@ -47,12 +47,27 @@ export const cta = {
   href: siteFacts.calendly.href,
 } as const;
 
+/**
+ * Canonical origin for every canonical tag, sitemap entry, robots.txt line and JSON-LD URL.
+ * It MUST be the host that answers 200 in production — not one that redirects.
+ * If Vercel's primary domain is changed (apex vs www), change NEXT_PUBLIC_SITE_URL to match.
+ */
+function canonicalOrigin(raw: string | undefined): string {
+  const fallback = "https://devsroute.com";
+  try {
+    const url = new URL(raw?.trim() || fallback);
+    return `https://${url.host}`;
+  } catch {
+    return fallback;
+  }
+}
+
 export const siteConfig = {
   name: siteFacts.companyName,
   title: "DevsRoute | SaaS MVP & AI Product Development Studio",
   description:
     "DevsRoute is a software studio building SaaS MVPs and AI products for startups and B2B founders. Clear scope, a defined end date, and direct access to the developers.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://devsroute.com",
+  url: canonicalOrigin(process.env.NEXT_PUBLIC_SITE_URL),
   email: siteFacts.email,
   address: siteFacts.address,
   calendly: {
