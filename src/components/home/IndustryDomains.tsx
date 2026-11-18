@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 
 function IndustryCard({ domain }: { domain: IndustryDomain }) {
   return (
-    <article className="group relative flex h-[28rem] w-[min(85vw,20rem)] shrink-0 snap-start flex-col overflow-hidden rounded-[10px] sm:h-[30rem] sm:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-2.75rem)/3)] xl:w-[calc((100%-4.5rem)/4)]">
+    <article className="group relative flex h-[28rem] w-[calc((100%-0.75rem)/1.3)] shrink-0 snap-start flex-col overflow-hidden rounded-[10px] sm:h-[30rem] sm:w-[calc((100%-1.5rem)/2.3)] lg:w-[calc((100%-2.25rem)/3.3)] xl:w-[calc((100%-3rem)/4.3)]">
       <Image
         src={domain.image}
         alt={domain.imageAlt}
@@ -24,7 +24,7 @@ function IndustryCard({ domain }: { domain: IndustryDomain }) {
       />
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-b from-ink-950/80 via-ink-950/55 to-ink-950/72"
+        className="absolute inset-0 bg-gradient-to-b from-ink-950/75 via-ink-950/25 via-50% to-ink-950/10 transition-opacity duration-500 group-hover:opacity-90"
       />
 
       <div className="relative z-10 flex h-full flex-col p-4">

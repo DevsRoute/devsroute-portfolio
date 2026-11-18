@@ -1,16 +1,19 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { MessageCircle, X, Send, Loader2 } from "lucide-react";
+import { MessageCircle, X, Send, Loader2, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useChatContext } from "./ChatContext";
 import { renderMarkdown } from "./renderMarkdown";
+
+const NUDGE_KEY = "dr-chat-nudge-dismissed";
 
 export function ChatWidget() {
   const { messages, loading, send } = useChatContext();
   const [visible, setVisible] = useState(false);
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
+  const [showNudge, setShowNudge] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
@@ -21,6 +24,25 @@ export function ChatWidget() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Label + arrow beside the launcher, until the visitor hides it or opens chat.
+  useEffect(() => {
+    if (!visible || open) return;
+    let dismissed = false;
+    try {
+      dismissed = localStorage.getItem(NUDGE_KEY) === "1";
+    } catch {}
+    if (dismissed) return;
+    const t = window.setTimeout(() => setShowNudge(true), 900);
+    return () => window.clearTimeout(t);
+  }, [visible, open]);
+
+  function dismissNudge() {
+    setShowNudge(false);
+    try {
+      localStorage.setItem(NUDGE_KEY, "1");
+    } catch {}
+  }
 
   useEffect(() => {
     if (open) {
@@ -138,17 +160,91 @@ export function ChatWidget() {
       )}
 
       {/* Toggle button */}
-      <button
-        onClick={() => setOpen((v) => !v)}
-        aria-label={open ? "Close chat" : "Open chat"}
-        className="flex size-14 items-center justify-center rounded-full bg-[var(--brand-500)] text-white shadow-lg transition hover:bg-[var(--brand-600)] hover:scale-105 active:scale-95"
-      >
-        {open ? (
+      {open ? (
+        <button
+          onClick={() => setOpen(false)}
+          aria-label="Close chat"
+          className="flex size-14 items-center justify-center rounded-full bg-[var(--brand-500)] text-white shadow-lg transition hover:scale-105 hover:bg-[var(--brand-600)] active:scale-95"
+        >
           <X className="size-6" />
-        ) : (
-          <MessageCircle className="size-6" strokeWidth={2} />
-        )}
-      </button>
+        </button>
+      ) : (
+        <div className="relative">
+          {showNudge && (
+            <div className="chat-nudge-in absolute right-[4.25rem] bottom-[4.75rem] flex items-end">
+              <div className="relative flex items-center gap-3 rounded-2xl border border-[var(--ink-100)] bg-white py-2.5 pr-9 pl-3 shadow-[0_16px_36px_-14px_rgb(9_39_73/0.3)]">
+                <button
+                  onClick={() => {
+                    dismissNudge();
+                    setOpen(true);
+                  }}
+                  className="flex items-center gap-3 text-left focus-visible:outline-none"
+                  tabIndex={-1}
+                  aria-hidden
+                >
+                  <span className="relative flex size-9 shrink-0 items-center justify-center rounded-xl bg-[var(--brand-50)]">
+                    <Sparkles className="size-4 text-[var(--brand-500)]" />
+                    <span className="absolute -top-0.5 -right-0.5 size-2.5 rounded-full border-2 border-white bg-emerald-500" />
+                  </span>
+                  <span className="whitespace-nowrap">
+                    <span className="block text-sm leading-5 font-semibold text-[var(--ink-700)]">
+                      Ask our AI
+                    </span>
+                    <span className="block text-xs leading-4 text-[var(--ink-500)]">
+                      Replies in seconds
+                    </span>
+                  </span>
+                </button>
+                <button
+                  onClick={dismissNudge}
+                  aria-label="Hide chat label"
+                  className="absolute top-1.5 right-1.5 flex size-6 items-center justify-center rounded-full text-[var(--ink-300)] transition-colors hover:bg-[var(--ink-50)] hover:text-[var(--ink-700)]"
+                >
+                  <X className="size-3.5" />
+                </button>
+              </div>
+            </div>
+          )}
+
+          {showNudge && (
+            /* hand-drawn arrow from the label into the button */
+            <svg
+              aria-hidden
+              viewBox="0 0 48 44"
+              fill="none"
+              className="pointer-events-none absolute right-[2.9rem] bottom-[2.6rem] h-12 w-14 text-[var(--brand-500)] [filter:drop-shadow(0_0_2px_rgb(255_255_255/0.95))]"
+            >
+              <path
+                className="chat-arrow-draw"
+                d="M6 3 C 6 22, 18 34, 38 37"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+              <path
+                className="chat-arrow-draw [animation-delay:600ms]"
+                d="M31 30 L 39 37 L 30 42"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          )}
+
+          <button
+            onClick={() => {
+              dismissNudge();
+              setOpen(true);
+            }}
+            aria-label="Open chat — ask our AI"
+            className="group relative flex size-14 items-center justify-center rounded-full bg-[var(--brand-500)] text-white shadow-[0_12px_28px_-8px_rgb(29_129_242/0.6)] ring-4 ring-white transition hover:scale-105 hover:bg-[var(--brand-600)] focus-visible:outline-none focus-visible:ring-[var(--brand-200)] active:scale-95"
+          >
+            <span className="absolute inset-0 animate-ping rounded-full bg-[var(--brand-500)] opacity-20 [animation-duration:2.4s] motion-reduce:hidden" />
+            <MessageCircle className="relative size-6" strokeWidth={2} />
+          </button>
+        </div>
+      )}
     </div>
   );
 }

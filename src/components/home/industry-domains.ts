@@ -74,9 +74,9 @@ const allIndustryDomains: IndustryDomain[] = [
     title: "On-Demand",
     description:
       "Marketplace and service platforms that connect customers with providers in real time.",
-    href: "/services/mobile-app-development",
-    image: "/brand/industries/on-demand.jpg",
-    imageAlt: "On-demand service app connecting customers with nearby providers",
+    href: "/industries/on-demand",
+    image: "/brand/industries/on-demand/rider-night.jpg",
+    imageAlt: "Delivery rider on a scooter speeding through a city at night",
     enabled: true,
   },
   {
