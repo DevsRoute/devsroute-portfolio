@@ -45,6 +45,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
+      url: `${siteConfig.url}/industries/on-demand`,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: `${siteConfig.url}/technologies`,
       changeFrequency: "monthly",
       priority: 0.75,
