@@ -114,7 +114,7 @@ export const projects: Project[] = [
       alt: "Edge Home Builders website home page",
     },
     logo: { src: "/clients/edge-home-builders.webp", width: 181, height: 120, displayHeight: 50 },
-    order: 6,
+    order: 2,
   },
   {
     slug: "tutor-edge",
@@ -130,7 +130,7 @@ export const projects: Project[] = [
       alt: "Tutor-Edge peer-tutoring marketplace home page",
     },
     logo: { src: "/clients/tutor-edge.webp", width: 330, height: 60, displayHeight: 28 },
-    order: 7,
+    order: 3,
   },
   {
     slug: "aicro",
@@ -147,7 +147,7 @@ export const projects: Project[] = [
       alt: "AICRO website home page",
     },
     logo: { src: "/clients/aicro.webp", width: 258, height: 59, displayHeight: 28 },
-    order: 4,
+    order: 5,
   },
   {
     slug: "success-ai",
@@ -186,7 +186,7 @@ export const projects: Project[] = [
       alt: "Success.ai home page",
     },
     logo: { src: "/clients/success-ai.webp", width: 169, height: 37, displayHeight: 30 },
-    order: 2,
+    order: 4,
   },
   {
     slug: "post-oak-group",
@@ -202,7 +202,7 @@ export const projects: Project[] = [
       alt: "Post Oak Group website home page",
     },
     logo: { src: "/clients/post-oak-group-dark.webp", width: 424, height: 96, displayHeight: 34 },
-    order: 5,
+    order: 6,
   },
   {
     slug: "prisma-group",
@@ -218,7 +218,7 @@ export const projects: Project[] = [
       alt: "Prisma Group website home page",
     },
     logo: { src: "/clients/prisma-group.webp", width: 377, height: 102, displayHeight: 34 },
-    order: 3,
+    order: 7,
   },
 ];
 

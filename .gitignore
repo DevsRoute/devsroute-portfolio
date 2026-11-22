@@ -9,13 +9,11 @@ next-env.d.ts
 *.tsbuildinfo
 
 # env files — never commit secrets
-.env
 .env*.local
-.env.development
-.env.production
 
 # misc
 .DS_Store
 *.pem
 npm-debug.log*
 .vercel
+config.bat

@@ -6,7 +6,6 @@ import { Search, X } from "lucide-react";
 import { TechIcon } from "@/components/technologies/TechIcon";
 import {
   technologyCategories,
-  technologyCount,
   type TechnologyCategory,
 } from "@/lib/technologies-data";
 import { cn } from "@/lib/utils";
@@ -73,7 +72,6 @@ export function TechnologyDirectory() {
       .filter((c) => c.items.length > 0);
   }, [deferredQuery, active]);
 
-  const resultCount = visible.reduce((n, c) => n + c.items.length, 0);
 
   return (
     <>
@@ -89,7 +87,7 @@ export function TechnologyDirectory() {
               type="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder={`Search ${technologyCount} technologies…`}
+              placeholder="Search technologies…"
               className="h-11 w-full rounded-full border border-ink-200 bg-white pr-10 pl-10 text-sm text-ink-700 placeholder:text-ink-400 transition-colors outline-none focus:border-brand-500 focus:ring-3 focus:ring-brand-500/15 [&::-webkit-search-cancel-button]:hidden"
             />
             {query ? (
@@ -134,9 +132,6 @@ export function TechnologyDirectory() {
       </div>
 
       <div className="container-site py-10 sm:py-14">
-        <p className="sr-only" aria-live="polite">
-          {resultCount} technologies shown
-        </p>
 
         {visible.length > 0 ? (
           visible.map((category) => (

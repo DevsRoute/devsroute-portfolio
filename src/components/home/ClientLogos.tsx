@@ -2,6 +2,17 @@ import Image from "next/image";
 
 import { getProjects, type Project } from "@/data/projects";
 
+/** Logo strip order — kept as approved, independent of the project card order. */
+const LOGO_ORDER = [
+  "permis-connect",
+  "success-ai",
+  "prisma-group",
+  "aicro",
+  "post-oak-group",
+  "edge-home-builders",
+  "tutor-edge",
+];
+
 /** How many times the list repeats inside each half of the track, so one half is always wider than the screen. */
 const REPEAT = 2;
 
@@ -36,7 +47,9 @@ function LogoItem({ project, copy }: { project: Project; copy: number }) {
  * motion it becomes a static, centred, wrapping row.
  */
 export function ClientLogos() {
-  const clients = getProjects().filter((p) => p.logo);
+  const clients = getProjects()
+    .filter((p) => p.logo)
+    .sort((a, b) => LOGO_ORDER.indexOf(a.slug) - LOGO_ORDER.indexOf(b.slug));
   if (clients.length === 0) return null;
 
   const copies = Array.from({ length: REPEAT * 2 }, (_, i) => i);

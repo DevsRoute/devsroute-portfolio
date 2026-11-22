@@ -73,7 +73,7 @@ const nextConfig: NextConfig = {
         destination: "/work",
         permanent: true,
       })),
-      // On-demand industry page removed: no real project work behind it.
+      // Industry page removed: redirect its old URL home.
       { source: "/industries/on-demand", destination: "/", permanent: true },
     ];
   },

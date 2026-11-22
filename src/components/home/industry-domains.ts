@@ -6,7 +6,6 @@
  *  education-peer-tutoring.webp  — Chidera Okeke    unsplash.com/photos/2FDdgn0-W_o
  *  sales-ai-platforms.webp       — Vitaly Gariev    unsplash.com/photos/UikYLDQj9_I
  *  healthcare.webp               — Vitaly Gariev    unsplash.com/photos/Wl3hAbxMF80
- *  on-demand-delivery.webp       — Rowan Freeman    unsplash.com/photos/clYlmCaQbzY
  */
 
 export type IndustryDomain = {
@@ -14,8 +13,12 @@ export type IndustryDomain = {
   title: string;
   description: string;
   href: string;
-  image: string;
-  imageAlt: string;
+  /** Button text; defaults to "Learn more". */
+  linkLabel?: string;
+  /** Omit for the call-to-action card, which uses an abstract graphic instead of a photo. */
+  image?: string;
+  imageAlt?: string;
+  variant?: "cta";
   enabled: boolean;
 };
 
@@ -60,13 +63,13 @@ const allIndustryDomains: IndustryDomain[] = [
     enabled: true,
   },
   {
-    id: "on-demand",
-    title: "On-Demand",
+    id: "your-industry",
+    title: "Your industry?",
     description:
-      "Booking and marketplace apps that connect customers with providers in real time.",
-    href: "/services/mobile-app-development",
-    image: "/brand/industries/on-demand-delivery.webp",
-    imageAlt: "Delivery rider on a scooter in a city at night",
+      "Building in another space? Tell us what you need, and we’ll tell you honestly if we’re the right team.",
+    href: "/contact",
+    linkLabel: "Get a free one-page scope",
+    variant: "cta",
     enabled: true,
   },
 ];
