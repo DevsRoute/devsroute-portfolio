@@ -9,7 +9,8 @@
  * - Screenshots: real screenshots only, in /public/work/<slug>/ as WebP (< ~300 KB).
  *   Until one exists, leave `screenshot` undefined and a neutral placeholder is shown.
  *
- * Project pages (/work/<slug>): a heading plus short bullet sections. Facts only.
+ * Project pages (/work/<slug>): a heading plus short bullet sections. Facts only;
+ * a gap is a bullet starting with "TODO:", which blocks the page from going live.
  */
 
 export type ProjectKind = "full" | "partial";
@@ -69,19 +70,24 @@ export const projects: Project[] = [
     caseStudy: [
       {
         heading: "About the project",
-        bullets: [
-          "A French marketplace for buying and selling building permits.",
-          "Live at permis-connect.fr.",
-        ],
+        bullets: ["A French marketplace for buying and selling building permits."],
+      },
+      {
+        heading: "The problem",
+        bullets: ["TODO: the client's problem, ideally in their own words."],
       },
       {
         heading: "What we did",
         bullets: [
-          "Built the platform from scratch, end to end.",
-          "Design (UI/UX).",
-          "Front end.",
-          "Back end.",
-          "First version delivered in about six weeks.",
+          "Full build, end to end: design, front end and back end.",
+          "Built from scratch in about six weeks.",
+        ],
+      },
+      {
+        heading: "Outcome",
+        bullets: [
+          "The marketplace is live at permis-connect.fr.",
+          "TODO: any results we are allowed to share.",
         ],
       },
     ],
@@ -153,16 +159,24 @@ export const projects: Project[] = [
     caseStudy: [
       {
         heading: "About the project",
-        bullets: ["Success.ai is an AI sales platform."],
+        bullets: ["TODO: what Success.ai does, in one or two sentences."],
+      },
+      {
+        heading: "The problem",
+        bullets: ["TODO: what Success.ai needed from the back-end AI work."],
       },
       {
         heading: "Our part",
         bullets: [
-          "Back-end AI work. This page covers only our part of the product.",
+          "Back-end AI work. This page describes only our part.",
           "Retrieval-augmented generation (RAG).",
-          "LLM-powered features.",
-          "AI pipelines behind those features.",
+          "LLM features.",
+          "AI pipelines.",
         ],
+      },
+      {
+        heading: "Outcome",
+        bullets: ["TODO: any results we are allowed to share."],
       },
     ],
     screenshot: {
@@ -209,8 +223,18 @@ export const projects: Project[] = [
 ];
 
 /** Projects with a page at /work/<slug>. */
-/** Approved for production. The sitemap uses only this. */
+/** A bullet that still needs a real fact. Pages with any TODO can never go live. */
+export function isTodo(text: string) {
+  return text.trim().startsWith("TODO:");
+}
+
+function hasTodo(project: Project) {
+  return Boolean(project.caseStudy?.some((section) => section.bullets.some(isTodo)));
+}
+
+/** Approved for production (flag on, no TODOs left). The sitemap uses only this. */
 export function isCaseStudyApproved(project: Project): boolean {
+  if (hasTodo(project)) return false;
   return Boolean(project.caseStudy?.length && project.caseStudyPublished);
 }
 

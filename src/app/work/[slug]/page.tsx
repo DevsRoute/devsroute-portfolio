@@ -10,6 +10,7 @@ import {
   getCaseStudyProjects,
   getProjectBySlug,
   isCaseStudyPublished,
+  isTodo,
 } from "@/data/projects";
 import { jsonLdScript } from "@/lib/json-ld";
 import { pageMetadata } from "@/lib/seo";
@@ -120,9 +121,19 @@ export default async function CaseStudyPage({ params }: Props) {
                   {section.heading}
                 </h2>
                 <ul className="mt-4 list-disc space-y-2 pl-5 text-base leading-7 text-ink-500 marker:text-brand-500">
-                  {section.bullets.map((bullet) => (
-                    <li key={bullet}>{bullet}</li>
-                  ))}
+                  {section.bullets.map((bullet) =>
+                    isTodo(bullet) ? (
+                      // Draft-only: production never builds a page that has a TODO.
+                      <li
+                        key={bullet}
+                        className="list-none rounded-md border border-dashed border-amber-300 bg-amber-50/60 px-3 py-2 text-sm text-amber-800 marker:content-none"
+                      >
+                        {bullet}
+                      </li>
+                    ) : (
+                      <li key={bullet}>{bullet}</li>
+                    ),
+                  )}
                 </ul>
               </section>
             ))}

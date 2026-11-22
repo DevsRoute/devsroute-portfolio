@@ -67,11 +67,15 @@ const nextConfig: NextConfig = {
   },
   /** Old portfolio pages that were not our work: permanently (308) redirect to /work. */
   async redirects() {
-    return removedProjectSlugs.map((slug) => ({
-      source: `/work/${slug}`,
-      destination: "/work",
-      permanent: true,
-    }));
+    return [
+      ...removedProjectSlugs.map((slug) => ({
+        source: `/work/${slug}`,
+        destination: "/work",
+        permanent: true,
+      })),
+      // On-demand industry page removed: no real project work behind it.
+      { source: "/industries/on-demand", destination: "/", permanent: true },
+    ];
   },
   async headers() {
     return [

@@ -60,7 +60,6 @@ export const siteFacts = {
 
   /** Industry card visibility */
   industries: {
-    showOnDemand: false,
     showHealthTech: false,
     showLogistics: false,
   },

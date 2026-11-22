@@ -305,6 +305,7 @@ export const marqueeRows: string[][] = [
     "Golang",
     "GitHub Copilot",
     "Flutter",
+    "React Native",
     "AWS",
   ],
 ];

@@ -14,18 +14,43 @@ import { cn } from "@/lib/utils";
 function IndustryCard({ domain }: { domain: IndustryDomain }) {
   return (
     <article className="group relative flex h-[28rem] w-[calc((100%-0.75rem)/1.3)] shrink-0 snap-start flex-col overflow-hidden rounded-[10px] sm:h-[30rem] sm:w-[calc((100%-1.5rem)/2.3)] lg:w-[calc((100%-2.25rem)/3.3)] xl:w-[calc((100%-3rem)/4.3)]">
-      <Image
-        src={domain.image}
-        alt={domain.imageAlt}
-        fill
-        draggable={false}
-        sizes="(max-width: 640px) 85vw, (max-width: 1024px) 45vw, 25vw"
-        className="object-cover object-[center_28%] transition-transform duration-500 group-hover:scale-[1.04]"
-      />
-      <div
-        aria-hidden
-        className="absolute inset-0 bg-gradient-to-b from-ink-950/75 via-ink-950/25 via-50% to-ink-950/10 transition-opacity duration-500 group-hover:opacity-90"
-      />
+      {domain.frame ? (
+        <>
+          {/* Real project screenshot, shown as a framed browser preview (never cropped into text). */}
+          <div aria-hidden className="absolute inset-0 bg-[linear-gradient(160deg,#10347e_0%,#0755e9_100%)]" />
+          <div className="absolute top-[46%] left-4 w-[170%] overflow-hidden rounded-t-lg bg-white shadow-[0_18px_40px_rgb(3_20_60/0.45)] ring-1 ring-white/20 transition-transform duration-500 group-hover:-translate-y-1.5">
+            <div aria-hidden className="flex h-5 items-center gap-1 bg-ink-100 px-2">
+              <span className="size-1.5 rounded-full bg-ink-300" />
+              <span className="size-1.5 rounded-full bg-ink-300" />
+              <span className="size-1.5 rounded-full bg-ink-300" />
+            </div>
+            <Image
+              src={domain.image}
+              alt={domain.imageAlt}
+              width={1600}
+              height={890}
+              draggable={false}
+              sizes="(max-width: 640px) 140vw, (max-width: 1024px) 75vw, 45vw"
+              className="h-auto w-full"
+            />
+          </div>
+        </>
+      ) : (
+        <>
+          <Image
+            src={domain.image}
+            alt={domain.imageAlt}
+            fill
+            draggable={false}
+            sizes="(max-width: 640px) 85vw, (max-width: 1024px) 45vw, 25vw"
+            className="object-cover object-[center_28%] transition-transform duration-500 group-hover:scale-[1.04]"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0 bg-gradient-to-b from-ink-950/75 via-ink-950/25 via-50% to-ink-950/10 transition-opacity duration-500 group-hover:opacity-90"
+          />
+        </>
+      )}
 
       <div className="relative z-10 flex h-full flex-col p-4">
         <h3 className="font-heading text-2xl font-semibold tracking-tight text-white">
@@ -98,8 +123,8 @@ export function IndustryDomains() {
           </div>
 
           <p className="max-w-md text-sm leading-7 text-ink-500 sm:text-base sm:leading-8 lg:absolute lg:left-1/2 lg:max-w-[18rem] lg:-translate-x-1/2 lg:text-center">
-            SaaS, AI, healthcare, travel, commerce, and on-demand.
-            Software that fits how the business works.
+            Real estate and construction, education, sales and AI platforms,
+            and healthcare.
           </p>
 
           <div className="flex shrink-0 items-center gap-2">

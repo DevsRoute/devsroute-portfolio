@@ -5,7 +5,6 @@ import { TechIcon } from "@/components/technologies/TechIcon";
 import {
   findTechnology,
   marqueeRows,
-  technologyCount,
 } from "@/lib/technologies-data";
 
 function MarqueeWord({ name }: { name: string }) {
@@ -74,9 +73,8 @@ export function TechMarquee() {
           <span className="text-brand-500">.</span>
         </h2>
         <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-ink-500 sm:text-lg sm:leading-8">
-          Our team has expertise in {Math.floor(technologyCount / 10) * 10}+
-          technologies and programming languages, including the AI coding
-          tools rewriting how software gets built.
+          We build with the MERN stack, Python, RAG and LLMs, plus mobile and
+          DevOps when the project needs it.
         </p>
       </div>
 

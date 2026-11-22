@@ -14,6 +14,34 @@ export type ServiceIndustryBlock = {
   imageAlt: string;
 };
 
+/** Only industries with real project work behind them — shared by every service page. */
+const realIndustryBlocks: ServiceIndustryBlock[] = [
+      {
+        name: "Real Estate & Construction",
+        description: "Marketplaces and websites for real estate, building permits and home building.",
+        image: "/work/edge-home-builders/home.webp",
+        imageAlt: "Edge Home Builders website home page",
+      },
+      {
+        name: "Education",
+        description: "Peer-tutoring and education marketplaces.",
+        image: "/work/tutor-edge/home.webp",
+        imageAlt: "Tutor-Edge peer-tutoring marketplace home page",
+      },
+      {
+        name: "Sales & AI Platforms",
+        description: "Payments, back-end development and AI features (RAG, LLMs) for sales platforms.",
+        image: "/work/success-ai/home.webp",
+        imageAlt: "Success.ai home page",
+      },
+      {
+        name: "Healthcare",
+        description: "Software for healthcare products.",
+        image: "/brand/industries/healthtech-care.jpg",
+        imageAlt: "Healthcare app shown across laptop, phone, and smartwatch",
+      },
+    ];
+
 export type ServiceVisualConfig = {
   visualType: ServiceVisualType;
   heroTone: "tint" | "white";
@@ -72,32 +100,7 @@ export const serviceVisualConfig: Record<string, ServiceVisualConfig> = {
         imageAlt: "SaaS platform dashboard preview",
       },
     ],
-    industryBlocks: [
-      {
-        name: "Healthcare",
-        description: "Digital platforms that simplify patient, provider, and operational workflows.",
-        image: "/brand/industries/healthtech-care.jpg",
-        imageAlt: "Healthcare software platform visual",
-      },
-      {
-        name: "Finance",
-        description: "Secure applications for financial workflows, analytics, and customer experiences.",
-        image: "/brand/industries/fintech-banking.jpg",
-        imageAlt: "FinTech application interface visual",
-      },
-      {
-        name: "Logistics",
-        description: "Systems for fleet visibility, delivery coordination, and operations.",
-        image: "/brand/industries/logistics-shipping.jpg",
-        imageAlt: "Logistics operations software visual",
-      },
-      {
-        name: "SaaS",
-        description: "Product platforms built for growth, onboarding, and recurring value.",
-        image: "/brand/industries/saas-mvp.jpg",
-        imageAlt: "SaaS product interface visual",
-      },
-    ],
+    industryBlocks: realIndustryBlocks,
     projectIds: ["flowdesk", "fleetcore", "northpeak"],
   },
   "web-application-development": {
@@ -139,40 +142,15 @@ export const serviceVisualConfig: Record<string, ServiceVisualConfig> = {
         imageAlt: "Business platform dashboard preview",
       },
     ],
-    industryBlocks: [
-      {
-        name: "SaaS",
-        description: "Product-led web platforms built for recurring user value.",
-        image: "/brand/industries/saas-mvp.jpg",
-        imageAlt: "SaaS web application industry visual",
-      },
-      {
-        name: "eCommerce",
-        description: "Shopping experiences focused on discovery and conversion.",
-        image: "/brand/industries/ecommerce-shop.jpg",
-        imageAlt: "eCommerce web application visual",
-      },
-      {
-        name: "Finance",
-        description: "Web apps for accounts, analytics, and digital financial workflows.",
-        image: "/brand/industries/fintech-banking.jpg",
-        imageAlt: "FinTech web application visual",
-      },
-      {
-        name: "Travel",
-        description: "Booking platforms and digital travel experiences.",
-        image: "/brand/industries/travel-tourism.jpg",
-        imageAlt: "Travel web platform visual",
-      },
-    ],
+    industryBlocks: realIndustryBlocks,
     projectIds: ["flowdesk", "marketly", "northpeak"],
   },
   "mobile-app-development": {
     visualType: "mobile-apps",
     heroTone: "tint",
     intro: {
-      image: "/brand/industries/travel-tourism.jpg",
-      imageAlt: "Travel app on a phone beside a passport and boarding pass",
+      image: "/brand/services/mobile-apps.jpg",
+      imageAlt: "Mobile app development workspace",
     },
     visualBreak: {
       image: "/brand/projects/caresync.jpg",
@@ -188,15 +166,15 @@ export const serviceVisualConfig: Record<string, ServiceVisualConfig> = {
       },
       {
         title: "Business Apps",
-        description: "Field and operations apps for teams working on the move.",
+        description: "Mobile tools for your team's internal workflows.",
         image: "/brand/projects/fleetcore.jpg",
         imageAlt: "Business mobile app preview",
       },
       {
-        title: "eCommerce Apps",
-        description: "Shopping and product discovery optimized for mobile conversion.",
-        image: "/brand/projects/marketly.jpg",
-        imageAlt: "eCommerce mobile app preview",
+        title: "Marketplace Apps",
+        description: "Mobile apps that connect buyers, sellers and service providers.",
+        image: "/brand/projects/havenhome.jpg",
+        imageAlt: "Marketplace mobile app preview",
       },
       {
         title: "SaaS Mobile Apps",
@@ -205,32 +183,7 @@ export const serviceVisualConfig: Record<string, ServiceVisualConfig> = {
         imageAlt: "SaaS mobile app preview",
       },
     ],
-    industryBlocks: [
-      {
-        name: "Health & Wellness",
-        description: "Apps that support care, coaching, and member engagement.",
-        image: "/brand/industries/healthtech-care.jpg",
-        imageAlt: "Healthcare mobile app industry visual",
-      },
-      {
-        name: "Retail",
-        description: "Mobile commerce and customer loyalty experiences.",
-        image: "/brand/industries/ecommerce-shop.jpg",
-        imageAlt: "Retail mobile app visual",
-      },
-      {
-        name: "On-Demand",
-        description: "Marketplace and service apps that connect users in real time.",
-        image: "/brand/industries/on-demand.jpg",
-        imageAlt: "On-demand mobile app visual",
-      },
-      {
-        name: "Travel",
-        description: "Booking, itineraries, and travel experiences on mobile.",
-        image: "/brand/industries/travel-tourism.jpg",
-        imageAlt: "Travel mobile app visual",
-      },
-    ],
+    industryBlocks: realIndustryBlocks,
     projectIds: ["caresync", "marketly", "fleetcore"],
   },
   "ai-solutions": {
@@ -272,32 +225,7 @@ export const serviceVisualConfig: Record<string, ServiceVisualConfig> = {
         imageAlt: "AI document processing visual",
       },
     ],
-    industryBlocks: [
-      {
-        name: "SaaS",
-        description: "AI features that improve product value and user productivity.",
-        image: "/brand/industries/saas-mvp.jpg",
-        imageAlt: "SaaS AI solution visual",
-      },
-      {
-        name: "Healthcare",
-        description: "Assistive workflows for providers, patients, and operations.",
-        image: "/brand/industries/healthtech-care.jpg",
-        imageAlt: "Healthcare AI application visual",
-      },
-      {
-        name: "Finance",
-        description: "Insights, classification, and automation for financial products.",
-        image: "/brand/industries/fintech-banking.jpg",
-        imageAlt: "FinTech AI solution visual",
-      },
-      {
-        name: "Operations",
-        description: "Automation across logistics, support, and internal systems.",
-        image: "/brand/industries/logistics-shipping.jpg",
-        imageAlt: "Operations AI workflow visual",
-      },
-    ],
+    industryBlocks: realIndustryBlocks,
     projectIds: ["flowdesk", "northpeak", "caresync"],
     showAiFlow: true,
   },
@@ -339,32 +267,7 @@ export const serviceVisualConfig: Record<string, ServiceVisualConfig> = {
         imageAlt: "Product screens composed from a shared design system",
       },
     ],
-    industryBlocks: [
-      {
-        name: "SaaS",
-        description: "Product experiences that simplify complex software.",
-        image: "/brand/industries/saas-mvp.jpg",
-        imageAlt: "SaaS UI design visual",
-      },
-      {
-        name: "eCommerce",
-        description: "Shopping flows focused on clarity and conversion.",
-        image: "/brand/industries/ecommerce-shop.jpg",
-        imageAlt: "eCommerce UI design visual",
-      },
-      {
-        name: "Travel",
-        description: "Booking and travel experiences with strong visual hierarchy.",
-        image: "/brand/industries/travel-tourism.jpg",
-        imageAlt: "Travel platform UI design visual",
-      },
-      {
-        name: "Finance",
-        description: "Clear interfaces for data-heavy financial products.",
-        image: "/brand/industries/fintech-banking.jpg",
-        imageAlt: "FinTech UI design visual",
-      },
-    ],
+    industryBlocks: realIndustryBlocks,
     projectIds: ["havenhome", "flowdesk", "marketly"],
   },
   "cloud-devops": {
@@ -406,32 +309,7 @@ export const serviceVisualConfig: Record<string, ServiceVisualConfig> = {
         imageAlt: "Cloud migration platform preview",
       },
     ],
-    industryBlocks: [
-      {
-        name: "SaaS",
-        description: "Reliable delivery for products with growing user demand.",
-        image: "/brand/industries/saas-mvp.jpg",
-        imageAlt: "SaaS cloud infrastructure visual",
-      },
-      {
-        name: "Logistics",
-        description: "Infrastructure for high-availability operations platforms.",
-        image: "/brand/industries/logistics-shipping.jpg",
-        imageAlt: "Logistics cloud platform visual",
-      },
-      {
-        name: "Finance",
-        description: "Secure, observable systems for financial applications.",
-        image: "/brand/industries/fintech-banking.jpg",
-        imageAlt: "FinTech cloud infrastructure visual",
-      },
-      {
-        name: "eCommerce",
-        description: "Scalable hosting and deployment for peak traffic.",
-        image: "/brand/industries/ecommerce-shop.jpg",
-        imageAlt: "eCommerce cloud infrastructure visual",
-      },
-    ],
+    industryBlocks: realIndustryBlocks,
     projectIds: ["fleetcore", "flowdesk", "northpeak"],
   },
 };

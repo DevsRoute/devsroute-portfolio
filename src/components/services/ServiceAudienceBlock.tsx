@@ -63,7 +63,7 @@ const audienceBySlug: Record<
 > = {
   "ai-solutions": {
     forWho:
-      "SaaS teams (roughly 10–100 people) that want chatbots, automation, or OpenAI features without stalling the core roadmap.",
+      "SaaS teams that want chatbots, automation, RAG or LLM features without stalling the core roadmap.",
     whatYouGet: [
       "A scoped AI feature brief",
       "Working integration in your product",

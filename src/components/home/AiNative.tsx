@@ -177,8 +177,8 @@ export function AiNative() {
             <strong className="font-semibold text-ink-700">AI-native development</strong>{" "}
             means designing a feature around language models from day one: data,
             UX, guardrails and evaluation built together, not a chat widget added
-            later. Our senior engineers ship production AI for SaaS teams whose
-            roadmap is already full.
+            later. We build AI features grounded in your data, with a human
+            review step where it matters and a clear log of what the AI did.
           </p>
         </div>
 

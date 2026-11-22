@@ -36,7 +36,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // PRICING (paused): page("/pricing", 0.9, "monthly"),
     page("/work", 0.85, "monthly"),
     page("/about", 0.8, "monthly"),
-    page("/industries/on-demand", 0.8, "monthly"),
     page("/technologies", 0.75, "monthly"),
     page("/approach", 0.7, "monthly"),
     page("/contact", 0.7, "yearly"),

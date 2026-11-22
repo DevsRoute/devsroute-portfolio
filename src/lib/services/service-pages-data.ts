@@ -237,14 +237,10 @@ export const servicePages: ServicePageData[] = [
       title: "Industries We",
       titleAccent: "Work With.",
       items: [
-        "Healthcare",
-        "Finance",
-        "Real Estate",
-        "Logistics",
-        "eCommerce",
+        "Real Estate & Construction",
         "Education",
-        "Professional Services",
-        "SaaS",
+        "Sales & AI Platforms",
+        "Healthcare",
       ],
     },
     faq: [
@@ -262,11 +258,6 @@ export const servicePages: ServicePageData[] = [
         question: "How long does custom software development take?",
         answer:
           "It depends on scope, complexity, and integrations. The end date is agreed before build starts, and there is a demo every week. Larger platforms are delivered in phases.",
-      },
-      {
-        question: "Can custom software integrate with existing systems?",
-        answer:
-          "Yes. We regularly connect custom applications with CRMs, ERPs, payment providers, authentication systems, analytics tools, and internal databases through APIs and secure integrations.",
       },
       {
         question: "Can you maintain software after launch?",
@@ -334,7 +325,6 @@ export const servicePages: ServicePageData[] = [
         "Dashboards",
         "Marketplaces",
         "Booking Platforms",
-        "eCommerce Applications",
         "Membership Platforms",
       ],
       layout: "columns",
@@ -480,9 +470,8 @@ export const servicePages: ServicePageData[] = [
         "Customer Apps",
         "Business Apps",
         "SaaS Mobile Apps",
-        "eCommerce Apps",
+        "Marketplace Apps",
         "Booking Apps",
-        "On-Demand Apps",
         "Membership Apps",
         "Internal Business Apps",
       ],
@@ -521,17 +510,13 @@ export const servicePages: ServicePageData[] = [
       ],
     },
     industries: {
-      title: "Where Mobile Apps",
-      titleAccent: "Create Value.",
+      title: "Industries We",
+      titleAccent: "Work With.",
       items: [
-        "Health & Wellness",
-        "Retail & eCommerce",
-        "Professional Services",
-        "Logistics",
+        "Real Estate & Construction",
         "Education",
-        "SaaS",
-        "Hospitality",
-        "Field Operations",
+        "Sales & AI Platforms",
+        "Healthcare",
       ],
     },
     faq: [
@@ -688,11 +673,6 @@ export const servicePages: ServicePageData[] = [
           "We build AI assistants, document processing systems, intelligent search, recommendation features, workflow automation, and LLM-powered product experiences integrated into real applications.",
       },
       {
-        question: "Can you add AI to an existing product?",
-        answer:
-          "Yes. We often integrate AI into existing web apps, mobile apps, and internal tools rather than building from scratch. That can include search, automation, assistants, and data extraction features.",
-      },
-      {
         question: "How do you approach AI privacy and security?",
         answer:
           "We design with access control, secure data handling, and clear boundaries around what AI can and cannot do. Sensitive workflows are built with human oversight and monitoring where appropriate.",
@@ -807,7 +787,7 @@ export const servicePages: ServicePageData[] = [
         "Web Applications",
         "Mobile Apps",
         "Dashboards",
-        "eCommerce",
+        "Marketplaces",
         "Customer Portals",
         "Business Platforms",
       ],
@@ -830,16 +810,6 @@ export const servicePages: ServicePageData[] = [
         question: "What is the difference between UI and UX design?",
         answer:
           "UX design focuses on how a product works and how users move through it. UI design focuses on the visual interface — layout, typography, components, and visual style. Strong products need both working together.",
-      },
-      {
-        question: "Do you only design, or also develop products?",
-        answer:
-          "We do both. Many clients work with us for end-to-end product design and development, while others engage us for design-only phases before or during build.",
-      },
-      {
-        question: "Can you redesign an existing product?",
-        answer:
-          "Yes. We help teams improve confusing flows, modernize interfaces, increase conversion, and create more consistent design systems across web and mobile products.",
       },
       {
         question: "Do you create design systems?",
@@ -989,11 +959,6 @@ export const servicePages: ServicePageData[] = [
         question: "Do you set up monitoring and alerting?",
         answer:
           "Yes. Monitoring helps teams detect issues early, understand performance trends, and respond before users are heavily impacted.",
-      },
-      {
-        question: "Can DevOps work with our existing development team?",
-        answer:
-          "Absolutely. We often collaborate with internal engineering teams to improve pipelines, infrastructure, and release practices without disrupting ongoing product work.",
       },
     ],
     relatedSlugs: [
