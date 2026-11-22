@@ -27,6 +27,15 @@ export type CaseStudy = {
   bullets: string[];
 }[];
 
+/** Client logo from the company's own site, as a transparent WebP in /public/clients/. */
+export type ProjectLogo = {
+  src: string;
+  width: number;
+  height: number;
+  /** Display height in px, tuned so every logo has a similar visual weight. */
+  displayHeight: number;
+};
+
 export type Project = {
   slug: string;
   name: string;
@@ -37,6 +46,7 @@ export type Project = {
   summary: string;
   liveUrl?: string;
   screenshot?: ProjectScreenshot;
+  logo?: ProjectLogo;
   caseStudy?: CaseStudy;
   order: number;
 };
@@ -75,6 +85,7 @@ export const projects: Project[] = [
       height: 884,
       alt: "Permis Connect marketplace home page",
     },
+    logo: { src: "/clients/permis-connect.webp", width: 334, height: 120, displayHeight: 40 },
     order: 1,
   },
   {
@@ -90,6 +101,7 @@ export const projects: Project[] = [
       height: 821,
       alt: "Edge Home Builders website home page",
     },
+    logo: { src: "/clients/edge-home-builders.webp", width: 181, height: 120, displayHeight: 50 },
     order: 6,
   },
   {
@@ -105,6 +117,7 @@ export const projects: Project[] = [
       height: 890,
       alt: "Tutor-Edge peer-tutoring marketplace home page",
     },
+    logo: { src: "/clients/tutor-edge.webp", width: 330, height: 60, displayHeight: 28 },
     order: 7,
   },
   {
@@ -121,6 +134,7 @@ export const projects: Project[] = [
       height: 887,
       alt: "AICRO website home page",
     },
+    logo: { src: "/clients/aicro.webp", width: 258, height: 59, displayHeight: 28 },
     order: 4,
   },
   {
@@ -151,6 +165,7 @@ export const projects: Project[] = [
       height: 890,
       alt: "Success.ai home page",
     },
+    logo: { src: "/clients/success-ai.webp", width: 169, height: 37, displayHeight: 30 },
     order: 2,
   },
   {
@@ -166,6 +181,7 @@ export const projects: Project[] = [
       height: 888,
       alt: "Post Oak Group website home page",
     },
+    logo: { src: "/clients/post-oak-group.webp", width: 424, height: 96, displayHeight: 34 },
     order: 5,
   },
   {
@@ -181,6 +197,7 @@ export const projects: Project[] = [
       height: 894,
       alt: "Prisma Group website home page",
     },
+    logo: { src: "/clients/prisma-group.webp", width: 377, height: 102, displayHeight: 34 },
     order: 3,
   },
 ];

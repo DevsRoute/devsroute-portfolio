@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { AiNative } from "@/components/home/AiNative";
 import { ClientStories } from "@/components/home/ClientStories";
+import { ClientLogos } from "@/components/home/ClientLogos";
 import { ContactCta } from "@/components/home/ContactCta";
 import { FaqSection } from "@/components/home/FaqSection";
 import { Hero } from "@/components/home/Hero";
@@ -110,6 +111,7 @@ export default function Home() {
     <main className="flex-1">
       <HomeJsonLd />
       <Hero />
+      <ClientLogos />
       <IndustryDomains />
       <OurServices />
       <AiNative />
