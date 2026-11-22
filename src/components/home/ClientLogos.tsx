@@ -44,15 +44,8 @@ export function ClientLogos() {
   return (
     <section
       aria-labelledby="client-logos-heading"
-      className="border-y border-ink-100 bg-white py-10 sm:py-12"
+      className="bg-white py-10 sm:py-12"
     >
-      <h2
-        id="client-logos-heading"
-        className="container-site text-center text-xs font-semibold tracking-[0.16em] text-ink-400 uppercase sm:text-[0.7rem]"
-      >
-        Companies we&apos;ve worked with
-      </h2>
-
       <div className="client-marquee mt-8 overflow-hidden [mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)]">
         <ul className="client-marquee-track flex items-center">
           {copies.map((copy) =>
