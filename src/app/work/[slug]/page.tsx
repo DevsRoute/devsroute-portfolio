@@ -9,7 +9,6 @@ import {
   getCaseStudyProjects,
   getProjectBySlug,
   isCaseStudyPublished,
-  isTodo,
 } from "@/data/projects";
 import { jsonLdScript } from "@/lib/json-ld";
 import { pageMetadata } from "@/lib/seo";
@@ -19,7 +18,6 @@ type Props = {
   params: Promise<{ slug: string }>;
 };
 
-/** Only case studies with every TODO filled are built in production. */
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
@@ -38,32 +36,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!project) return { title: "Project" };
 
   return pageMetadata({
-    title: `${project.name} case study`,
+    title: project.name,
     description: project.summary,
     path: `/work/${project.slug}`,
   });
-}
-
-function Paragraphs({ items }: { items: string[] }) {
-  return (
-    <div className="mt-3 space-y-4">
-      {items.map((text) =>
-        isTodo(text) ? (
-          // Only reachable in `next dev`: production never builds a page with TODOs.
-          <p
-            key={text}
-            className="rounded-lg border border-dashed border-amber-400 bg-amber-50 px-4 py-3 font-mono text-sm text-amber-800"
-          >
-            {text}
-          </p>
-        ) : (
-          <p key={text} className="text-base leading-8 text-ink-500">
-            {text}
-          </p>
-        ),
-      )}
-    </div>
-  );
 }
 
 export default async function CaseStudyPage({ params }: Props) {
@@ -82,16 +58,6 @@ export default async function CaseStudyPage({ params }: Props) {
     ],
   };
 
-  const sections = [
-    { title: "The client", items: project.caseStudy.client },
-    { title: "The problem", items: project.caseStudy.problem },
-    {
-      title: project.kind === "partial" ? "Our part" : "What we did",
-      items: project.caseStudy.whatWeDid,
-    },
-    { title: "Outcome", items: project.caseStudy.outcome },
-  ];
-
   return (
     <main className="flex-1">
       <script
@@ -107,7 +73,7 @@ export default async function CaseStudyPage({ params }: Props) {
             ← All work
           </Link>
           <p className="mt-6 font-mono text-xs tracking-[0.14em] text-brand-600 uppercase">
-            Case study · {project.label}
+            {project.label}
           </p>
           <h1 className="mt-3 font-heading text-3xl font-semibold tracking-tight text-ink-700 sm:text-4xl">
             {project.name}
@@ -129,12 +95,16 @@ export default async function CaseStudyPage({ params }: Props) {
           </div>
 
           <div className="mx-auto mt-12 max-w-3xl space-y-10">
-            {sections.map((section) => (
-              <section key={section.title}>
+            {project.caseStudy.map((section) => (
+              <section key={section.heading}>
                 <h2 className="font-heading text-2xl font-semibold text-ink-700">
-                  {section.title}
+                  {section.heading}
                 </h2>
-                <Paragraphs items={section.items} />
+                <ul className="mt-4 list-disc space-y-2 pl-5 text-base leading-7 text-ink-500 marker:text-brand-500">
+                  {section.bullets.map((bullet) => (
+                    <li key={bullet}>{bullet}</li>
+                  ))}
+                </ul>
               </section>
             ))}
           </div>

@@ -9,9 +9,7 @@
  * - Screenshots: real screenshots only, in /public/work/<slug>/ as WebP (< ~300 KB).
  *   Until one exists, leave `screenshot` undefined and a neutral placeholder is shown.
  *
- * Case studies: any paragraph starting with "TODO:" blocks the page from being
- * published. In production, a case study page only exists once every TODO is filled.
- * In `next dev` the page renders with the TODOs highlighted, for review.
+ * Project pages (/work/<slug>): a heading plus short bullet sections. Facts only.
  */
 
 export type ProjectKind = "full" | "partial";
@@ -23,12 +21,11 @@ export type ProjectScreenshot = {
   alt: string;
 };
 
+/** A project page: sections of short bullets. Facts only — no placeholders. */
 export type CaseStudy = {
-  client: string[];
-  problem: string[];
-  whatWeDid: string[];
-  outcome: string[];
-};
+  heading: string;
+  bullets: string[];
+}[];
 
 export type Project = {
   slug: string;
@@ -44,8 +41,6 @@ export type Project = {
   order: number;
 };
 
-export const TODO_PREFIX = "TODO:";
-
 export const projects: Project[] = [
   {
     slug: "permis-connect",
@@ -55,22 +50,25 @@ export const projects: Project[] = [
     summary:
       "A French marketplace for buying and selling building permits, built from scratch in about six weeks.",
     liveUrl: "https://permis-connect.fr",
-    caseStudy: {
-      client: [
-        "Permis Connect is a French marketplace where people buy and sell building permits.",
-      ],
-      problem: [
-        "TODO: ask Saboor — what problem did Permis Connect need solved, ideally in the client's own words?",
-      ],
-      whatWeDid: [
-        "We built Permis Connect from scratch, end to end: the design, the front end and the back end.",
-        "The first version took about six weeks.",
-      ],
-      outcome: [
-        "The marketplace is live at permis-connect.fr.",
-        "TODO: ask Saboor — any results we are allowed to share (for example usage, listings or client feedback)?",
-      ],
-    },
+    caseStudy: [
+      {
+        heading: "About the project",
+        bullets: [
+          "A French marketplace for buying and selling building permits.",
+          "Live at permis-connect.fr.",
+        ],
+      },
+      {
+        heading: "What we did",
+        bullets: [
+          "Built the platform from scratch, end to end.",
+          "Design (UI/UX).",
+          "Front end.",
+          "Back end.",
+          "First version delivered in about six weeks.",
+        ],
+      },
+    ],
     screenshot: {
       src: "/work/permis-connect/home.webp",
       width: 1600,
@@ -132,22 +130,21 @@ export const projects: Project[] = [
     label: "Our part: back-end AI (RAG, LLMs, AI pipelines)",
     summary:
       "Back-end AI work for Success.ai: retrieval-augmented generation (RAG), LLM features and AI pipelines.",
-    caseStudy: {
-      client: [
-        "TODO: ask Saboor — how should we describe Success.ai and its product in one or two sentences?",
-      ],
-      problem: [
-        "TODO: ask Saboor — what did Success.ai need from the back-end AI work, ideally in their own words?",
-      ],
-      whatWeDid: [
-        "Our part was back-end AI work. This page covers only that part of the product.",
-        "We worked on retrieval-augmented generation (RAG), LLM-powered features and the AI pipelines behind them.",
-        "TODO: ask Saboor — which RAG, LLM and pipeline pieces can we describe in more detail?",
-      ],
-      outcome: [
-        "TODO: ask Saboor — any results we are allowed to share?",
-      ],
-    },
+    caseStudy: [
+      {
+        heading: "About the project",
+        bullets: ["Success.ai is an AI sales platform."],
+      },
+      {
+        heading: "Our part",
+        bullets: [
+          "Back-end AI work. This page covers only our part of the product.",
+          "Retrieval-augmented generation (RAG).",
+          "LLM-powered features.",
+          "AI pipelines behind those features.",
+        ],
+      },
+    ],
     screenshot: {
       src: "/work/success-ai/home.webp",
       width: 1600,
@@ -188,24 +185,9 @@ export const projects: Project[] = [
   },
 ];
 
-export function isTodo(text: string) {
-  return text.trim().startsWith(TODO_PREFIX);
-}
-
-/** True when every section of the case study has real text and no TODO. */
-export function isCaseStudyReady(caseStudy: CaseStudy | undefined): boolean {
-  if (!caseStudy) return false;
-  return Object.values(caseStudy).every(
-    (paragraphs: string[]) =>
-      paragraphs.length > 0 && paragraphs.every((p) => p.trim() && !isTodo(p)),
-  );
-}
-
-/** Case study pages are always previewable in dev; in production only when ready. */
+/** Projects with a page at /work/<slug>. */
 export function isCaseStudyPublished(project: Project): boolean {
-  if (!project.caseStudy) return false;
-  if (process.env.NODE_ENV !== "production") return true;
-  return isCaseStudyReady(project.caseStudy);
+  return Boolean(project.caseStudy && project.caseStudy.length > 0);
 }
 
 export function getProjects() {
