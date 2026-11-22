@@ -14,9 +14,9 @@ export function AboutIntro() {
 
           <div className="space-y-5 text-sm leading-7 text-ink-500 sm:space-y-6 sm:text-base sm:leading-8">
             <p>
-              {siteFacts.companyName} is a small remote team. We help startups
+              {siteFacts.companyName} is a senior remote team. We help startups
               and B2B founders with SaaS MVP development and AI product
-              development — without inventing case studies.
+              development.
             </p>
             <p>
               You work directly with the developers. Every project starts with
@@ -24,9 +24,8 @@ export function AboutIntro() {
               week.
             </p>
             <p>
-              We&apos;re not a 100-person agency. We&apos;re three co-founders
-              and a senior-first delivery style built for cold-email founders
-              who need clarity fast.
+              We&apos;re three co-founders with a senior-first delivery style:
+              you work directly with the people building your product.
             </p>
           </div>
         </div>

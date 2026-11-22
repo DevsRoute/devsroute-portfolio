@@ -36,7 +36,7 @@ const allIndustryDomains: IndustryDomain[] = [
       "SaaS MVP development with a clear scope and a defined end date, then room to grow as users do.",
     href: "/services/custom-software-development",
     image: "/brand/industries/mvps-saas.jpg",
-    imageAlt: "SaaS product dashboard for compliance training",
+    imageAlt: "Developers working on laptops in a shared office",
     enabled: true,
   },
   {

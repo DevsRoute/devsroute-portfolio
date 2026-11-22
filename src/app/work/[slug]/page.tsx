@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
-import { siteFacts } from "@/config/site-facts";
-import { getProjectBySlug, getProjectSlugs } from "@/data/projects";
+import { ProjectMedia } from "@/components/work/ProjectCard";
+import {
+  displayDomain,
+  getCaseStudyProjects,
+  getProjectBySlug,
+  isCaseStudyPublished,
+  isTodo,
+} from "@/data/projects";
 import { jsonLdScript } from "@/lib/json-ld";
 import { pageMetadata } from "@/lib/seo";
 import { calendlyHref, siteConfig } from "@/lib/site-config";
@@ -14,25 +19,56 @@ type Props = {
   params: Promise<{ slug: string }>;
 };
 
+/** Only case studies with every TODO filled are built in production. */
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
-  return getProjectSlugs(siteFacts.showConcepts).map((slug) => ({ slug }));
+  return getCaseStudyProjects().map((p) => ({ slug: p.slug }));
+}
+
+function getPublishedProject(slug: string) {
+  const project = getProjectBySlug(slug);
+  if (!project || !project.caseStudy || !isCaseStudyPublished(project)) return null;
+  return { ...project, caseStudy: project.caseStudy };
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const project = getProjectBySlug(slug, siteFacts.showConcepts);
-  if (!project) return { title: "Project", robots: { index: false, follow: false } };
+  const project = getPublishedProject(slug);
+  if (!project) return { title: "Project" };
 
   return pageMetadata({
-    title: project.title,
+    title: `${project.name} case study`,
     description: project.summary,
     path: `/work/${project.slug}`,
   });
 }
 
-export default async function WorkDetailPage({ params }: Props) {
+function Paragraphs({ items }: { items: string[] }) {
+  return (
+    <div className="mt-3 space-y-4">
+      {items.map((text) =>
+        isTodo(text) ? (
+          // Only reachable in `next dev`: production never builds a page with TODOs.
+          <p
+            key={text}
+            className="rounded-lg border border-dashed border-amber-400 bg-amber-50 px-4 py-3 font-mono text-sm text-amber-800"
+          >
+            {text}
+          </p>
+        ) : (
+          <p key={text} className="text-base leading-8 text-ink-500">
+            {text}
+          </p>
+        ),
+      )}
+    </div>
+  );
+}
+
+export default async function CaseStudyPage({ params }: Props) {
   const { slug } = await params;
-  const project = getProjectBySlug(slug, siteFacts.showConcepts);
+  const project = getPublishedProject(slug);
   if (!project) notFound();
 
   const pageUrl = `${siteConfig.url}/work/${project.slug}`;
@@ -42,9 +78,19 @@ export default async function WorkDetailPage({ params }: Props) {
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
       { "@type": "ListItem", position: 2, name: "Work", item: `${siteConfig.url}/work` },
-      { "@type": "ListItem", position: 3, name: project.title, item: pageUrl },
+      { "@type": "ListItem", position: 3, name: project.name, item: pageUrl },
     ],
   };
+
+  const sections = [
+    { title: "The client", items: project.caseStudy.client },
+    { title: "The problem", items: project.caseStudy.problem },
+    {
+      title: project.kind === "partial" ? "Our part" : "What we did",
+      items: project.caseStudy.whatWeDid,
+    },
+    { title: "Outcome", items: project.caseStudy.outcome },
+  ];
 
   return (
     <main className="flex-1">
@@ -61,15 +107,13 @@ export default async function WorkDetailPage({ params }: Props) {
             ← All work
           </Link>
           <p className="mt-6 font-mono text-xs tracking-[0.14em] text-brand-600 uppercase">
-            {project.category}
+            Case study · {project.label}
           </p>
           <h1 className="mt-3 font-heading text-3xl font-semibold tracking-tight text-ink-700 sm:text-4xl">
-            {project.clientNameVisible && project.clientName
-              ? project.clientName
-              : project.title}
+            {project.name}
           </h1>
-          <p className="mt-4 text-base text-ink-500">
-            Our role: {project.roleSummary}
+          <p className="mt-4 text-base leading-7 text-ink-500 sm:text-lg">
+            {project.summary}
           </p>
         </div>
       </section>
@@ -77,75 +121,34 @@ export default async function WorkDetailPage({ params }: Props) {
       <section className="bg-white py-12 sm:py-16">
         <div className="container-site max-w-4xl">
           <div className="relative aspect-[16/9] overflow-hidden rounded-2xl bg-ink-100">
-            <Image
-              src={project.screenshot}
-              alt={project.screenshotAlt}
-              fill
+            <ProjectMedia
+              project={project}
               sizes="(max-width: 896px) 100vw, 896px"
-              className="object-cover"
               priority
             />
           </div>
 
-          <div className="mt-12 space-y-10">
-            <section>
-              <h2 className="font-heading text-2xl font-semibold text-ink-700">
-                Overview
-              </h2>
-              <p className="mt-3 text-base leading-8 text-ink-500">
-                {project.description}
-              </p>
-            </section>
-
-            <section>
-              <h2 className="font-heading text-2xl font-semibold text-ink-700">
-                Our role
-              </h2>
-              <p className="mt-3 text-base leading-8 text-ink-500">
-                {project.roleSummary}. We stay close to the product surface and
-                ship in focused milestones with clear communication.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="font-heading text-2xl font-semibold text-ink-700">
-                What we built
-              </h2>
-              <p className="mt-3 text-base leading-8 text-ink-500">
-                {project.whatWeBuilt}
-              </p>
-            </section>
-
-            <section>
-              <h2 className="font-heading text-2xl font-semibold text-ink-700">
-                Tech
-              </h2>
-              <ul className="mt-4 flex flex-wrap gap-2">
-                {project.tech.map((t) => (
-                  <li
-                    key={t}
-                    className="rounded-full bg-[#F4F7FC] px-3 py-1.5 text-sm font-medium text-ink-600"
-                  >
-                    {t}
-                  </li>
-                ))}
-              </ul>
-            </section>
-
-            {project.outcome ? (
-              <section>
+          <div className="mx-auto mt-12 max-w-3xl space-y-10">
+            {sections.map((section) => (
+              <section key={section.title}>
                 <h2 className="font-heading text-2xl font-semibold text-ink-700">
-                  Outcome
+                  {section.title}
                 </h2>
-                <p className="mt-3 text-base leading-8 text-ink-500">
-                  {project.outcome}
-                </p>
+                <Paragraphs items={section.items} />
               </section>
-            ) : null}
+            ))}
           </div>
 
-          <div className="mt-14 flex flex-wrap gap-4 border-t border-ink-100 pt-10">
-            <Button href={calendlyHref(`/work/${project.slug}`)} size="lg">
+          <div className="mx-auto mt-14 flex max-w-3xl flex-wrap gap-4 border-t border-ink-100 pt-10">
+            <Button href="/contact" size="lg">
+              Get a free one-page scope
+            </Button>
+            <Button
+              href={calendlyHref(`/work/${project.slug}`)}
+              size="lg"
+              variant="outline"
+              arrow={false}
+            >
               {siteConfig.cta.label}
             </Button>
             {project.liveUrl ? (
@@ -155,7 +158,7 @@ export default async function WorkDetailPage({ params }: Props) {
                 variant="outline"
                 arrow={false}
               >
-                Visit live site
+                Visit {displayDomain(project.liveUrl)}
               </Button>
             ) : null}
           </div>

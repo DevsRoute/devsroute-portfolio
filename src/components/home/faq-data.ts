@@ -9,7 +9,7 @@ export const homeFaqs: HomeFaq[] = [
     id: "how-long",
     question: "How long does an MVP take?",
     answer:
-      "It depends on scope. The end date is agreed on the first call, and there is a demo every week.",
+      "A first version typically takes 4–8 weeks. The exact end date is agreed on the first call, and there is a demo every week.",
   },
   {
     id: "technical-cofounder",
@@ -39,7 +39,7 @@ export const homeFaqs: HomeFaq[] = [
     id: "cost",
     question: "How much does SaaS MVP development cost?",
     answer:
-      "There is no fixed public price. Cost follows the scope. On the first call we agree what is in the first version and the end date, and the quote comes from that written scope.",
+      "Projects start from $1,000. First versions typically cost $5,000–$15,000. The quote comes from a written scope, agreed before we start. See the pricing page for details.",
   },
   {
     id: "how-to-start",

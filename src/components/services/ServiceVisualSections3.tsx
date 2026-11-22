@@ -4,8 +4,8 @@ import { ArrowRight } from "lucide-react";
 
 import { ServiceContainer, ServiceSection } from "@/components/services/ServiceLayout";
 import { ServiceHeading } from "@/components/services/ServiceShared";
-import { siteFacts } from "@/config/site-facts";
-import { getFeaturedProjects } from "@/data/projects";
+import { ProjectCard } from "@/components/work/ProjectCard";
+import { getProjects } from "@/data/projects";
 import type { ServicePageData } from "@/lib/services/service-pages-data";
 import { getServiceVisualConfig } from "@/lib/services/service-visual-config";
 
@@ -135,7 +135,7 @@ export function ServiceProjectsShowcase({ service }: { service: ServicePageData 
   const visual = getServiceVisualConfig(service.slug);
   if (!visual) return null;
 
-  const projects = getFeaturedProjects(siteFacts.showConcepts).slice(0, 3);
+  const projects = getProjects().slice(0, 3);
   if (projects.length === 0) return null;
 
   return (
@@ -144,7 +144,7 @@ export function ServiceProjectsShowcase({ service }: { service: ServicePageData 
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <ServiceHeading
             as="h2"
-            title="Related"
+            title="Recent"
             accent="Work."
             className="text-white [&_span]:text-white/75"
           />
@@ -156,34 +156,9 @@ export function ServiceProjectsShowcase({ service }: { service: ServicePageData 
             <ArrowRight className="size-4" />
           </Link>
         </div>
-        <div className="mt-12 grid gap-8 lg:grid-cols-3">
+        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
-            <Link
-              key={project.slug}
-              href={`/work/${project.slug}`}
-              className="group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-            >
-              <div className="relative aspect-16/10 overflow-hidden rounded-2xl bg-white/10">
-                <Image
-                  src={project.screenshot}
-                  alt={project.screenshotAlt}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 33vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                />
-              </div>
-              <div className="pt-5">
-                <p className="text-[0.65rem] font-medium tracking-[0.14em] text-white/70 uppercase">
-                  {project.category}
-                </p>
-                <h3 className="mt-2 font-heading text-xl font-semibold text-white">
-                  {project.title}
-                </h3>
-                <p className="mt-2 line-clamp-2 text-sm leading-6 text-white/75">
-                  {project.summary}
-                </p>
-              </div>
-            </Link>
+            <ProjectCard key={project.slug} project={project} />
           ))}
         </div>
       </ServiceContainer>

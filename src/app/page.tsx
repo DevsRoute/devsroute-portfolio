@@ -7,6 +7,7 @@ import { FaqSection } from "@/components/home/FaqSection";
 import { Hero } from "@/components/home/Hero";
 import { IndustryDomains } from "@/components/home/IndustryDomains";
 import { OurServices } from "@/components/home/OurServices";
+import { PricingPreview } from "@/components/home/PricingPreview";
 import { ProjectsDelivered } from "@/components/home/ProjectsDelivered";
 import { TechMarquee } from "@/components/home/TechMarquee";
 import { TrustProof } from "@/components/home/TrustProof";
@@ -55,11 +56,6 @@ function HomeJsonLd() {
         description:
           "Remote software studio helping startups and B2B founders ship SaaS MVPs and AI products.",
         slogan: "SaaS MVPs and AI products with a clear scope and a defined end date.",
-        founder: siteFacts.founders.map((f) => ({
-          "@type": "Person",
-          name: f.name,
-          jobTitle: f.role,
-        })),
         contactPoint: {
           "@type": "ContactPoint",
           contactType: "sales",
@@ -76,7 +72,7 @@ function HomeJsonLd() {
           "UI/UX design",
           "Cloud and DevOps",
         ],
-        ...(sameAs.length ? { sameAs } : {}),
+        sameAs,
       },
       {
         "@type": "WebSite",
@@ -120,6 +116,7 @@ export default function Home() {
       <TechMarquee />
       <TrustProof />
       <ProjectsDelivered />
+      <PricingPreview />
       <ClientStories />
       <FaqSection />
       <ContactCta />

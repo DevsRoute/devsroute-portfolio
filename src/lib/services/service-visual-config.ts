@@ -104,39 +104,39 @@ export const serviceVisualConfig: Record<string, ServiceVisualConfig> = {
     visualType: "web-applications",
     heroTone: "tint",
     intro: {
-      image: "/brand/projects/conversational-ai-messaging-platform.png",
-      imageAlt: "Web application with conversations, assistants, and admin views",
+      image: "/brand/services/web-applications-v2.jpg",
+      imageAlt: "Web application development workspace",
       reverse: true,
     },
     visualBreak: {
-      image: "/brand/projects/conversational-ai-messaging-platform.png",
-      imageAlt: "Full-screen SaaS web application with conversations and admin views",
+      image: "/brand/services/web-applications.jpg",
+      imageAlt: "Web application interface on a laptop screen",
       caption: "Web applications designed for performance, clarity, and scale.",
     },
     buildItems: [
       {
         title: "SaaS Applications",
         description: "Subscription products with dashboards, billing, and user management.",
-        image: "/brand/projects/ai-compliance-training-platform.png",
-        imageAlt: "SaaS application dashboard with training and user workflows",
+        image: "/brand/industries/saas-mvp.jpg",
+        imageAlt: "SaaS application visual",
       },
       {
         title: "Customer Portals",
         description: "Secure web experiences for clients and account management.",
-        image: "/brand/projects/identity-verification-platform.png",
-        imageAlt: "Customer portal for identity checks and account status",
+        image: "/brand/projects/havenhome.jpg",
+        imageAlt: "Customer portal interface preview",
       },
       {
         title: "Marketplaces",
         description: "Platforms that connect buyers, sellers, and service providers.",
-        image: "/brand/projects/directory-website.png",
-        imageAlt: "Directory marketplace with listings and browse navigation",
+        image: "/brand/industries/ecommerce-shop.jpg",
+        imageAlt: "Marketplace platform visual",
       },
       {
         title: "Business Platforms",
         description: "Operational web apps for teams, workflows, and reporting.",
-        image: "/brand/projects/learning-platform.png",
-        imageAlt: "Business learning platform for teams and operational workflows",
+        image: "/brand/projects/flowdesk.jpg",
+        imageAlt: "Business platform dashboard preview",
       },
     ],
     industryBlocks: [
@@ -242,22 +242,22 @@ export const serviceVisualConfig: Record<string, ServiceVisualConfig> = {
       reverse: true,
     },
     visualBreak: {
-      image: "/brand/projects/conversational-ai-messaging-platform.png",
-      imageAlt: "Conversational AI messaging product with in-app assistant",
+      image: "/brand/services/ai-solutions-v2.jpg",
+      imageAlt: "AI solutions development visual",
       caption: "Practical AI features integrated into real product workflows.",
     },
     buildItems: [
       {
         title: "AI Assistants",
         description: "In-product assistants that help users complete tasks faster.",
-        image: "/brand/projects/conversational-ai-messaging-platform.png",
-        imageAlt: "Conversational AI assistant inside a messaging product",
+        image: "/brand/ai/ai-assistants.jpg",
+        imageAlt: "AI assistant visual",
       },
       {
         title: "Intelligent Search",
         description: "Search across documents, data, and product content.",
-        image: "/brand/projects/learning-platform.png",
-        imageAlt: "Learning platform with searchable courses and content",
+        image: "/brand/ai/ai-knowledge.jpg",
+        imageAlt: "AI knowledge search visual",
       },
       {
         title: "Workflow Automation",
@@ -268,8 +268,8 @@ export const serviceVisualConfig: Record<string, ServiceVisualConfig> = {
       {
         title: "Document Processing",
         description: "Extract, summarize, and organize business documents at scale.",
-        image: "/brand/projects/ai-compliance-training-platform.png",
-        imageAlt: "Product interface for organizing courses, documents, and content",
+        image: "/brand/ai/ai-documents.jpg",
+        imageAlt: "AI document processing visual",
       },
     ],
     industryBlocks: [

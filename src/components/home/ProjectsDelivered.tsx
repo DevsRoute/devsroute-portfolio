@@ -1,51 +1,15 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
-import { siteFacts } from "@/config/site-facts";
-import {
-  getFeaturedProjects,
-  hasAnonymousProjects,
-  type Project,
-} from "@/data/projects";
+import { ProjectCard } from "@/components/work/ProjectCard";
+import { getProjects } from "@/data/projects";
 import { cn } from "@/lib/utils";
 
-function ProjectCard({ project }: { project: Project }) {
-  return (
-    <Link
-      href={`/work/${project.slug}`}
-      className="group flex h-auto w-[min(88vw,22rem)] shrink-0 snap-start flex-col self-stretch overflow-hidden rounded-2xl border border-ink-100 bg-white transition-shadow hover:shadow-[0_16px_40px_rgb(16_52_126/0.1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 sm:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-2.75rem)/3)]"
-    >
-      <div className="relative aspect-[16/10] overflow-hidden bg-ink-100">
-        <Image
-          src={project.screenshot}
-          alt={project.screenshotAlt}
-          fill
-          draggable={false}
-          sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
-          className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
-        />
-      </div>
-      <div className="flex flex-1 flex-col gap-2 p-5 sm:p-6">
-        <span className="font-mono text-[11px] tracking-[0.12em] text-brand-600 uppercase">
-          {project.category}
-        </span>
-        <h3 className="line-clamp-2 min-h-14 font-heading text-xl font-semibold leading-7 tracking-tight text-ink-700">
-          {project.title}
-        </h3>
-        <p className="line-clamp-2 text-sm leading-6 text-ink-500">
-          {project.summary}
-        </p>
-      </div>
-    </Link>
-  );
-}
-
 export function ProjectsDelivered() {
-  const projects = getFeaturedProjects(siteFacts.showConcepts);
+  const projects = getProjects();
   const scrollerRef = useRef<HTMLDivElement>(null);
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
@@ -75,7 +39,7 @@ export function ProjectsDelivered() {
   function scrollByDir(dir: -1 | 1) {
     const el = scrollerRef.current;
     if (!el) return;
-    const card = el.querySelector("a");
+    const card = el.firstElementChild;
     const amount = card
       ? card.getBoundingClientRect().width + 20
       : el.clientWidth * 0.8;
@@ -97,15 +61,10 @@ export function ProjectsDelivered() {
               Work
               <span className="text-brand-500"> we have done.</span>
             </h2>
-            {hasAnonymousProjects(siteFacts.showConcepts) ? (
-              <p className="mt-3 text-sm text-ink-500">
-                Some projects are shown without client names at their request.
-              </p>
-            ) : null}
           </div>
 
           <p className="max-w-md text-sm leading-7 text-ink-500 sm:text-base sm:leading-8 lg:absolute lg:left-1/2 lg:max-w-[18rem] lg:-translate-x-1/2 lg:text-center">
-            Six products. Honest roles. No invented results.
+            Full builds and partial work. Each card says which part was ours.
           </p>
 
           <div className="flex shrink-0 items-center gap-2">
@@ -149,7 +108,11 @@ export function ProjectsDelivered() {
           )}
         >
           {projects.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
+            <ProjectCard
+              key={project.slug}
+              project={project}
+              className="h-auto w-[min(88vw,22rem)] shrink-0 snap-start self-stretch sm:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-2.75rem)/3)]"
+            />
           ))}
         </div>
 

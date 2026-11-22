@@ -1,5 +1,7 @@
 import type { NextConfig } from "next";
 
+import { removedProjectSlugs } from "./src/data/projects";
+
 const isDev = process.env.NODE_ENV !== "production";
 
 /**
@@ -51,6 +53,14 @@ const nextConfig: NextConfig = {
     // Only local images are optimised; no remote hosts are allowed.
     remotePatterns: [],
     dangerouslyAllowSVG: false,
+  },
+  /** Old portfolio pages that were not our work: permanently (308) redirect to /work. */
+  async redirects() {
+    return removedProjectSlugs.map((slug) => ({
+      source: `/work/${slug}`,
+      destination: "/work",
+      permanent: true,
+    }));
   },
   async headers() {
     return [
