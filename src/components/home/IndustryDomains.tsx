@@ -99,7 +99,7 @@ export function IndustryDomains() {
 
           <p className="max-w-md text-sm leading-7 text-ink-500 sm:text-base sm:leading-8 lg:absolute lg:left-1/2 lg:max-w-[18rem] lg:-translate-x-1/2 lg:text-center">
             Real estate and construction, education, sales and AI platforms,
-            and healthcare.
+            healthcare, and on-demand.
           </p>
 
           <div className="flex shrink-0 items-center gap-2">
