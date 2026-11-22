@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 
 const ROTATE_MS = 7000;
 
-/* One small, realistic product card per photo — decorative. */
+/* One compact, realistic product card per photo — decorative. */
 function FloatingCard({ id }: { id: AiCapabilityId }) {
   const shell =
     "w-[17.5rem] rounded-2xl border border-white/70 bg-white/95 p-3.5 shadow-[0_24px_48px_-16px_rgb(9_39_73/0.35)] backdrop-blur-md sm:w-[19rem] sm:p-4";

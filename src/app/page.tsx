@@ -10,6 +10,7 @@ import { IndustryDomains } from "@/components/home/IndustryDomains";
 import { OurServices } from "@/components/home/OurServices";
 // PRICING (paused): import { PricingPreview } from "@/components/home/PricingPreview";
 import { ProjectsDelivered } from "@/components/home/ProjectsDelivered";
+import { ScopeNote } from "@/components/home/ScopeNote";
 import { TechMarquee } from "@/components/home/TechMarquee";
 import { TrustProof } from "@/components/home/TrustProof";
 import {
@@ -119,6 +120,7 @@ export default function Home() {
       <TrustProof />
       <ProjectsDelivered />
       {/* PRICING (paused): <PricingPreview /> */}
+      <ScopeNote />
       <ClientStories />
       <FaqSection />
       <ContactCta />

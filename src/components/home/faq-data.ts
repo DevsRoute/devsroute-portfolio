@@ -41,7 +41,7 @@ export const homeFaqs: HomeFaq[] = [
     question: "How much does SaaS MVP development cost?",
     answer:
       // PRICING (paused): "Projects start from $1,000. First versions typically cost $5,000–$15,000. The quote comes from a written scope, agreed before we start. See the pricing page for details.",
-      "There is no fixed public price. Cost follows the scope. On the first call we agree what is in the first version and the end date, and the quote comes from that written scope.",
+      "Every project is scoped and priced up front. Start with a free one-page scope.",
   },
   {
     id: "how-to-start",

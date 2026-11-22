@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-import { getCaseStudyProjects } from "@/data/projects";
+import { getApprovedCaseStudyProjects } from "@/data/projects";
 import { getServicePageSlugs } from "@/lib/services/service-pages-data";
 import { siteConfig } from "@/lib/site-config";
 
@@ -43,6 +43,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     page("/privacy", 0.2, "yearly", LEGAL_UPDATED),
     page("/terms", 0.2, "yearly", LEGAL_UPDATED),
     ...getServicePageSlugs().map((slug) => page(`/services/${slug}`, 0.9, "monthly")),
-    ...getCaseStudyProjects().map((p) => page(`/work/${p.slug}`, 0.7, "monthly")),
+    ...getApprovedCaseStudyProjects().map((p) => page(`/work/${p.slug}`, 0.7, "monthly")),
   ];
 }

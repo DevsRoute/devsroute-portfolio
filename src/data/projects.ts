@@ -48,6 +48,12 @@ export type Project = {
   screenshot?: ProjectScreenshot;
   logo?: ProjectLogo;
   caseStudy?: CaseStudy;
+  /**
+   * Show the project page in production. Keep false until the text is approved:
+   * the page is then not built, not linked and not in the sitemap. It stays
+   * visible in `next dev` and on Vercel preview deployments for review.
+   */
+  caseStudyPublished?: boolean;
   order: number;
 };
 
@@ -203,8 +209,20 @@ export const projects: Project[] = [
 ];
 
 /** Projects with a page at /work/<slug>. */
+/** Approved for production. The sitemap uses only this. */
+export function isCaseStudyApproved(project: Project): boolean {
+  return Boolean(project.caseStudy?.length && project.caseStudyPublished);
+}
+
+/** Dev and Vercel preview builds show draft project pages for review; production never does. */
+const showDrafts =
+  process.env.NODE_ENV === "development" ||
+  process.env.NEXT_PUBLIC_VERCEL_ENV === "preview";
+
+/** Whether /work/<slug> exists in this build. */
 export function isCaseStudyPublished(project: Project): boolean {
-  return Boolean(project.caseStudy && project.caseStudy.length > 0);
+  if (!project.caseStudy?.length) return false;
+  return isCaseStudyApproved(project) || showDrafts;
 }
 
 export function getProjects() {
@@ -218,6 +236,11 @@ export function getProjectBySlug(slug: string) {
 /** Projects with a published case study page at /work/<slug>. */
 export function getCaseStudyProjects() {
   return getProjects().filter(isCaseStudyPublished);
+}
+
+/** Approved project pages only — for the sitemap. */
+export function getApprovedCaseStudyProjects() {
+  return getProjects().filter(isCaseStudyApproved);
 }
 
 /** Where a project card links: the case study if published, else the live site. */
@@ -239,16 +262,3 @@ export function displayDomain(url: string) {
     return url;
   }
 }
-
-/** Slugs of the old portfolio pages that were removed — permanently redirected to /work. */
-export const removedProjectSlugs = [
-  "ai-compliance-training",
-  "conversational-ai-messaging",
-  "identity-verification-kyc",
-  "social-recipe-app",
-  "community-social-network",
-  "learning-platform",
-  "travel-website",
-  "directory-website",
-  "small-business-website",
-] as const;

@@ -1,7 +1,5 @@
 import type { NextConfig } from "next";
 
-import { removedProjectSlugs } from "./src/data/projects";
-
 const isDev = process.env.NODE_ENV !== "production";
 
 /**
@@ -43,6 +41,19 @@ const securityHeaders = [
   { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
   { key: "X-DNS-Prefetch-Control", value: "on" },
 ];
+
+/** Slugs of the old portfolio pages that were removed — permanently redirected to /work. */
+const removedProjectSlugs = [
+  "ai-compliance-training",
+  "conversational-ai-messaging",
+  "identity-verification-kyc",
+  "social-recipe-app",
+  "community-social-network",
+  "learning-platform",
+  "travel-website",
+  "directory-website",
+  "small-business-website",
+] as const;
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,

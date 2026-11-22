@@ -71,7 +71,7 @@ function getAssistantReply(question: string) {
 
   if (q.includes("price") || q.includes("cost") || q.includes("budget")) {
     // PRICING (paused): "Projects start from $1,000. First versions typically from $5,000. See the pricing page, or ask for a free one-page scope."
-    return "Pricing depends on scope. Ask for a free one-page scope and we'll send a timeline and an estimate.";
+    return "Every project is scoped and priced up front. Start with a free one-page scope.";
   }
 
   return "Great question. DevsRoute helps startups and B2B founders with SaaS MVP development and AI product development. Ask about a service or your product idea, or open “Let’s talk” to connect with the team.";
