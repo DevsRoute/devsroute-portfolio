@@ -92,7 +92,7 @@ export const projects: Project[] = [
       height: 821,
       alt: "Edge Home Builders website home page",
     },
-    order: 2,
+    order: 6,
   },
   {
     slug: "tutor-edge",
@@ -107,7 +107,7 @@ export const projects: Project[] = [
       height: 890,
       alt: "Tutor-Edge peer-tutoring marketplace home page",
     },
-    order: 3,
+    order: 7,
   },
   {
     slug: "aicro",
@@ -154,7 +154,7 @@ export const projects: Project[] = [
       height: 890,
       alt: "Success.ai home page",
     },
-    order: 5,
+    order: 2,
   },
   {
     slug: "post-oak-group",
@@ -169,7 +169,7 @@ export const projects: Project[] = [
       height: 888,
       alt: "Post Oak Group website home page",
     },
-    order: 6,
+    order: 5,
   },
   {
     slug: "prisma-group",
@@ -184,7 +184,7 @@ export const projects: Project[] = [
       height: 894,
       alt: "Prisma Group website home page",
     },
-    order: 7,
+    order: 3,
   },
 ];
 
