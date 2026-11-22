@@ -161,7 +161,7 @@ export const serviceVisualConfig: Record<string, ServiceVisualConfig> = {
       {
         title: "Customer Apps",
         description: "Consumer-facing mobile experiences with polished onboarding and UX.",
-        image: "/brand/industries/on-demand.jpg",
+        image: "/brand/industries/abstract-waves.jpg",
         imageAlt: "Customer mobile app preview",
       },
       {

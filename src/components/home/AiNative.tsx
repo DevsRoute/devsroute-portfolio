@@ -16,8 +16,19 @@ import { cn } from "@/lib/utils";
 
 const ROTATE_MS = 7000;
 
-/* One compact, realistic product card per photo — decorative. */
+/* Sample UI per photo — decorative, always labelled "Example" so it never reads as client data. */
 function FloatingCard({ id }: { id: AiCapabilityId }) {
+  return (
+    <div className="relative">
+      <SampleCard id={id} />
+      <span className="absolute -top-2.5 left-3.5 rounded-full bg-ink-700 px-2 py-0.5 text-[10px] font-semibold tracking-[0.08em] text-white uppercase shadow-sm">
+        Example
+      </span>
+    </div>
+  );
+}
+
+function SampleCard({ id }: { id: AiCapabilityId }) {
   const shell =
     "w-[17.5rem] rounded-2xl border border-white/70 bg-white/95 p-3.5 shadow-[0_24px_48px_-16px_rgb(9_39_73/0.35)] backdrop-blur-md sm:w-[19rem] sm:p-4";
 
@@ -97,9 +108,9 @@ function FloatingCard({ id }: { id: AiCapabilityId }) {
       </div>
       <dl className="mt-2.5 grid grid-cols-2 gap-x-3 gap-y-1.5 text-[12px]">
         {[
-          ["Filer", "J. Morgan"],
+          ["Filer", "Jane Doe"],
           ["Tax year", "2025"],
-          ["Income", "$84,210"],
+          ["Income", "$50,000"],
           ["Status", "Joint"],
         ].map(([k, v]) => (
           <div key={k}>
