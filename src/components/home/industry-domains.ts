@@ -5,6 +5,8 @@
  *  real-estate-construction.webp — Troy Mortier     unsplash.com/photos/dUYELbt-H-E
  *  education-peer-tutoring.webp  — Chidera Okeke    unsplash.com/photos/2FDdgn0-W_o
  *  sales-ai-platforms.webp       — Vitaly Gariev    unsplash.com/photos/UikYLDQj9_I
+ *  healthcare.webp               — Vitaly Gariev    unsplash.com/photos/Wl3hAbxMF80
+ *  on-demand-delivery.webp       — Rowan Freeman    unsplash.com/photos/clYlmCaQbzY
  */
 
 export type IndustryDomain = {
@@ -53,8 +55,18 @@ const allIndustryDomains: IndustryDomain[] = [
     title: "Healthcare",
     description: "Software for healthcare products.",
     href: "/services/custom-software-development",
-    image: "/brand/industries/healthtech-care.jpg",
-    imageAlt: "Healthcare app shown across laptop, phone, and smartwatch",
+    image: "/brand/industries/healthcare.webp",
+    imageAlt: "Doctor reviewing a brain scan on a tablet",
+    enabled: true,
+  },
+  {
+    id: "on-demand",
+    title: "On-Demand",
+    description:
+      "Booking and marketplace apps that connect customers with providers in real time.",
+    href: "/services/mobile-app-development",
+    image: "/brand/industries/on-demand-delivery.webp",
+    imageAlt: "Delivery rider on a scooter in a city at night",
     enabled: true,
   },
 ];
