@@ -9,7 +9,6 @@ import { calendlyHref, siteConfig } from "@/lib/site-config";
 import {
   findTechnology,
   technologyCategories,
-  technologyCount,
 } from "@/lib/technologies-data";
 
 const description =
@@ -65,8 +64,6 @@ function TechnologiesJsonLd() {
 
 export default function TechnologiesPage() {
   const stats = [
-    { value: `${technologyCount}`, label: "Technologies in production use" },
-    { value: `${technologyCategories.length}`, label: "Engineering disciplines" },
     { value: "AI-native", label: "Delivery with modern coding agents" },
   ];
 
@@ -85,8 +82,8 @@ export default function TechnologiesPage() {
               Our full repertoire
             </p>
             <h1 className="mt-4 font-heading text-4xl font-semibold tracking-tight text-ink-700 sm:text-5xl lg:text-[3.5rem] lg:leading-[1.05]">
-              Every stack you rely on,{" "}
-              <span className="text-brand-500">one senior team.</span>
+              Technologies{" "}
+              <span className="text-brand-500">we work with</span>
             </h1>
             <p className="mt-5 max-w-xl text-base leading-7 text-ink-500 sm:text-lg sm:leading-8">
               Languages, frameworks, cloud platforms and the AI coding tools
@@ -94,7 +91,7 @@ export default function TechnologiesPage() {
               — then hand over code your team can own.
             </p>
 
-            <dl className="mt-10 grid max-w-xl grid-cols-3 gap-4 border-t border-ink-200/70 pt-6 sm:gap-8">
+            <dl className="mt-10 grid max-w-xl grid-cols-1 gap-4 border-t border-ink-200/70 pt-6 sm:gap-8">
               {stats.map((s) => (
                 <div key={s.label}>
                   <dt className="sr-only">{s.label}</dt>
