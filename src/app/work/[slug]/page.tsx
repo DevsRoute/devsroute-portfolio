@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ArrowUpRight, Globe } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { ProjectMedia } from "@/components/work/ProjectCard";
@@ -81,6 +82,24 @@ export default async function CaseStudyPage({ params }: Props) {
           <p className="mt-4 text-base leading-7 text-ink-500 sm:text-lg">
             {project.summary}
           </p>
+          {project.liveUrl ? (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mt-6 inline-flex items-center gap-2 rounded-full border border-brand-200 bg-white py-1.5 pr-3 pl-1.5 text-sm font-semibold text-brand-600 shadow-[0_4px_14px_rgb(29_129_242/0.08)] transition-colors hover:border-brand-400 hover:text-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+            >
+              <span className="inline-flex size-6 items-center justify-center rounded-full bg-brand-50">
+                <Globe className="size-3.5" aria-hidden />
+              </span>
+              {displayDomain(project.liveUrl)}
+              <ArrowUpRight
+                className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                aria-hidden
+              />
+              <span className="sr-only">(opens the live site in a new tab)</span>
+            </a>
+          ) : null}
         </div>
       </section>
 
@@ -121,16 +140,6 @@ export default async function CaseStudyPage({ params }: Props) {
             >
               {siteConfig.cta.label}
             </Button>
-            {project.liveUrl ? (
-              <Button
-                href={project.liveUrl}
-                size="lg"
-                variant="outline"
-                arrow={false}
-              >
-                Visit {displayDomain(project.liveUrl)}
-              </Button>
-            ) : null}
           </div>
         </div>
       </section>
