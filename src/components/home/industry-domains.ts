@@ -1,5 +1,10 @@
 /**
  * Industry domains for the homepage carousel.
+ *
+ * Photography: Unsplash (free under the Unsplash License, no attribution required).
+ *  real-estate-construction.webp — Troy Mortier     unsplash.com/photos/dUYELbt-H-E
+ *  education-peer-tutoring.webp  — Chidera Okeke    unsplash.com/photos/2FDdgn0-W_o
+ *  sales-ai-platforms.webp       — Vitaly Gariev    unsplash.com/photos/UikYLDQj9_I
  */
 
 export type IndustryDomain = {
@@ -9,8 +14,6 @@ export type IndustryDomain = {
   href: string;
   image: string;
   imageAlt: string;
-  /** Real project screenshot: shown as a framed browser preview instead of a full-bleed photo. */
-  frame?: boolean;
   enabled: boolean;
 };
 
@@ -22,9 +25,8 @@ const allIndustryDomains: IndustryDomain[] = [
     description:
       "Marketplaces and websites for real estate, building permits and home building.",
     href: "/work",
-    image: "/work/edge-home-builders/home.webp",
-    frame: true,
-    imageAlt: "Edge Home Builders website home page",
+    image: "/brand/industries/real-estate-construction.webp",
+    imageAlt: "Timber frame of a new house under construction",
     enabled: true,
   },
   {
@@ -32,9 +34,8 @@ const allIndustryDomains: IndustryDomain[] = [
     title: "Education",
     description: "Peer-tutoring and education marketplaces.",
     href: "/work",
-    image: "/work/tutor-edge/home.webp",
-    frame: true,
-    imageAlt: "Tutor-Edge peer-tutoring marketplace home page",
+    image: "/brand/industries/education-peer-tutoring.webp",
+    imageAlt: "Two students studying together at a laptop",
     enabled: true,
   },
   {
@@ -43,9 +44,8 @@ const allIndustryDomains: IndustryDomain[] = [
     description:
       "Payments, back-end development and AI features (RAG, LLMs) for sales platforms.",
     href: "/services/ai-solutions",
-    image: "/work/success-ai/home.webp",
-    frame: true,
-    imageAlt: "Success.ai home page",
+    image: "/brand/industries/sales-ai-platforms.webp",
+    imageAlt: "Team reviewing a dashboard together on a laptop",
     enabled: true,
   },
   {

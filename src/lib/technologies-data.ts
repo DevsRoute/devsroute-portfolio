@@ -13,6 +13,8 @@ export type Technology = {
   name: string;
   si?: string;
   devicon?: string;
+  /** Self-hosted logo in /public (for brands Simple Icons no longer publishes, e.g. OpenAI). */
+  local?: string;
 };
 
 export type TechnologyCategory = {
@@ -26,6 +28,7 @@ const DEVICON_BASE =
   "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons";
 
 export function technologyIconSrc(tech: Technology): string | null {
+  if (tech.local) return tech.local;
   if (tech.si) return `https://cdn.simpleicons.org/${tech.si}`;
   if (tech.devicon) return `${DEVICON_BASE}/${tech.devicon}.svg`;
   return null;
@@ -42,7 +45,7 @@ export const technologyCategories: TechnologyCategory[] = [
       { name: "Cursor", si: "cursor" },
       { name: "GitHub Copilot", si: "githubcopilot" },
       { name: "Windsurf", si: "windsurf" },
-      { name: "OpenAI Codex" },
+      { name: "OpenAI Codex", local: "/brand/tech/openai.svg" },
       { name: "Gemini CLI", si: "googlegemini" },
       { name: "v0", si: "v0" },
       { name: "Bolt", si: "stackblitz" },
@@ -57,7 +60,7 @@ export const technologyCategories: TechnologyCategory[] = [
     description:
       "LLM features, agents, RAG pipelines and classic ML — wired into real products, not demos.",
     items: [
-      { name: "OpenAI" },
+      { name: "OpenAI", local: "/brand/tech/openai.svg" },
       { name: "Anthropic Claude", si: "anthropic" },
       { name: "Google Gemini", si: "googlegemini" },
       { name: "Meta Llama", si: "meta" },
