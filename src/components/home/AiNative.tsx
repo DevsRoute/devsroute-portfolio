@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 
 const ROTATE_MS = 7000;
 
-/* One small, realistic product card per photo — decorative. */
+/* One compact, realistic product card per photo — decorative. */
 function FloatingCard({ id }: { id: AiCapabilityId }) {
   const shell =
     "w-[17.5rem] rounded-2xl border border-white/70 bg-white/95 p-3.5 shadow-[0_24px_48px_-16px_rgb(9_39_73/0.35)] backdrop-blur-md sm:w-[19rem] sm:p-4";
@@ -177,8 +177,8 @@ export function AiNative() {
             <strong className="font-semibold text-ink-700">AI-native development</strong>{" "}
             means designing a feature around language models from day one: data,
             UX, guardrails and evaluation built together, not a chat widget added
-            later. Our senior engineers ship production AI for SaaS teams whose
-            roadmap is already full.
+            later. We build AI features grounded in your data, with a human
+            review step where it matters and a clear log of what the AI did.
           </p>
         </div>
 

@@ -13,8 +13,8 @@ export const featuredServices = [
       "Analytics & insights",
     ],
     href: "/services/ai-solutions",
-    image: "/brand/previews/ai-messaging.webp",
-    imageAlt: "Conversational AI messaging product with an in-app assistant",
+    image: "/brand/services/ai-solutions-v2.jpg",
+    imageAlt: "AI solutions development visual",
   },
   {
     id: "custom-software",
@@ -30,8 +30,8 @@ export const featuredServices = [
       "Product engineering",
     ],
     href: "/services/custom-software-development",
-    image: "/brand/previews/saas-compliance.webp",
-    imageAlt: "SaaS compliance training dashboard with courses and workflows",
+    image: "/brand/services/custom-software-v2.jpg",
+    imageAlt: "Custom software development workspace",
   },
   {
     id: "web-applications",
@@ -47,8 +47,8 @@ export const featuredServices = [
       "Performance optimization",
     ],
     href: "/services/web-application-development",
-    image: "/brand/previews/learning-platform.webp",
-    imageAlt: "Learning platform web app with courses and learner workflows",
+    image: "/brand/services/web-applications-v2.jpg",
+    imageAlt: "Web application development workspace",
   },
   {
     id: "mobile-apps",
@@ -81,8 +81,8 @@ export const featuredServices = [
       "Usability improvements",
     ],
     href: "/services/ui-ux-design",
-    image: "/brand/previews/social-recipe.webp",
-    imageAlt: "Polished consumer product interface for discovering and sharing recipes",
+    image: "/brand/services/ui-ux-design-v2.jpg",
+    imageAlt: "UI and UX design workspace",
   },
   {
     id: "cloud-devops",

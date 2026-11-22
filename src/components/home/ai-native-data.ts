@@ -25,7 +25,7 @@ export const aiCapabilities: AiCapability[] = [
     id: "assistants",
     title: "AI assistants & copilots",
     summary:
-      "In-app assistants that answer from your product data and take actions for the user, so support tickets drop instead of piling up.",
+      "In-app assistants that answer from your product data and take actions for the user.",
     points: ["Grounded in your data", "Calls your APIs", "Hands off to a human"],
     image: "/brand/ai/ai-assistants.jpg",
     imageAlt: "Support specialist with a headset smiling at her desk",
@@ -55,7 +55,7 @@ export const aiCapabilities: AiCapability[] = [
     id: "automation",
     title: "Document & data automation",
     summary:
-      "Classify, extract and summarise invoices, forms and emails, so your team stops copy-pasting between tools.",
+      "Classify, extract and summarise invoices, forms and emails.",
     points: ["Structured extraction", "Confidence scores", "Fits existing tools"],
     image: "/brand/ai/ai-documents.jpg",
     imageAlt: "Hands reviewing a tax form next to a calculator and coffee",
@@ -70,7 +70,7 @@ export const aiPrinciples = [
   },
   {
     title: "Evals before launch",
-    body: "We test against real examples from your product, so quality is measured, not guessed.",
+    body: "We test against real examples from your product, before anything ships.",
   },
   {
     title: "Your data stays yours",

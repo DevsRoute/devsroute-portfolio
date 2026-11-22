@@ -5,21 +5,20 @@ import { TechIcon } from "@/components/technologies/TechIcon";
 import {
   findTechnology,
   marqueeRows,
-  technologyCount,
 } from "@/lib/technologies-data";
 
 function MarqueeWord({ name }: { name: string }) {
   const tech = findTechnology(name);
 
   return (
-    <li className="group/word flex shrink-0 items-center pr-10 sm:pr-16 lg:pr-20">
+    <li className="group/word flex shrink-0 items-center pr-8 sm:pr-12 lg:pr-16">
       {tech ? (
         <TechIcon
           tech={tech}
-          className="size-0 opacity-0 grayscale transition-all duration-300 group-hover/word:mr-3 group-hover/word:size-9 sm:group-hover/word:mr-4 group-hover/word:opacity-100 group-hover/word:grayscale-0 sm:group-hover/word:size-11 lg:group-hover/word:size-12"
+          className="size-0 opacity-0 grayscale transition-all duration-300 group-hover/word:mr-2.5 group-hover/word:size-7 sm:group-hover/word:mr-3 group-hover/word:opacity-100 group-hover/word:grayscale-0 sm:group-hover/word:size-9 lg:group-hover/word:size-10"
         />
       ) : null}
-      <span className="font-heading text-[2.5rem] leading-none font-semibold tracking-tight whitespace-nowrap text-ink-200 transition-colors duration-300 group-hover/word:text-ink-700 sm:text-6xl lg:text-[4.25rem]">
+      <span className="font-heading text-[2rem] leading-none font-semibold tracking-tight whitespace-nowrap text-ink-200 transition-colors duration-300 group-hover/word:text-ink-700 sm:text-5xl lg:text-[3.25rem]">
         {name}
       </span>
     </li>
@@ -74,9 +73,8 @@ export function TechMarquee() {
           <span className="text-brand-500">.</span>
         </h2>
         <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-ink-500 sm:text-lg sm:leading-8">
-          Our team has expertise in {Math.floor(technologyCount / 10) * 10}+
-          technologies and programming languages, including the AI coding
-          tools rewriting how software gets built.
+          We build with the MERN stack, Python, RAG and LLMs, plus mobile and
+          DevOps when the project needs it.
         </p>
       </div>
 

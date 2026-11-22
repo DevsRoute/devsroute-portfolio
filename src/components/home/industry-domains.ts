@@ -1,8 +1,12 @@
-import { siteFacts } from "@/config/site-facts";
-
 /**
  * Industry domains for the homepage carousel.
- * Logistics stays gated via site-facts.
+ *
+ * Photography: Unsplash (free under the Unsplash License, no attribution required).
+ *  real-estate-construction.webp — Troy Mortier     unsplash.com/photos/dUYELbt-H-E
+ *  education-peer-tutoring.webp  — Chidera Okeke    unsplash.com/photos/2FDdgn0-W_o
+ *  sales-ai-platforms.webp       — Vitaly Gariev    unsplash.com/photos/UikYLDQj9_I
+ *  healthcare.webp               — Vitaly Gariev    unsplash.com/photos/Wl3hAbxMF80
+ *  on-demand-delivery.webp       — Rowan Freeman    unsplash.com/photos/clYlmCaQbzY
  */
 
 export type IndustryDomain = {
@@ -12,82 +16,58 @@ export type IndustryDomain = {
   href: string;
   image: string;
   imageAlt: string;
-  /** REPLACE_IMAGE: temporary placeholder — supply a real asset */
-  needsImageReplace?: boolean;
   enabled: boolean;
 };
 
+/** Only industries with real project work behind them. */
 const allIndustryDomains: IndustryDomain[] = [
   {
-    id: "ai-products",
-    title: "AI-Native Products",
+    id: "real-estate",
+    title: "Real Estate & Construction",
     description:
-      "Chatbots, automation and AI features added to new or existing products, using OpenAI and modern web stacks.",
-    href: "/services/ai-solutions",
-    image: "/brand/industries/ai-powered-products.png",
-    imageAlt: "AI-native product interfaces",
-    needsImageReplace: true,
+      "Marketplaces and websites for real estate, building permits and home building.",
+    href: "/work",
+    image: "/brand/industries/real-estate-construction.webp",
+    imageAlt: "Timber frame of a new house under construction",
     enabled: true,
   },
   {
-    id: "saas",
-    title: "SaaS & MVPs",
+    id: "education",
+    title: "Education",
+    description: "Peer-tutoring and education marketplaces.",
+    href: "/work",
+    image: "/brand/industries/education-peer-tutoring.webp",
+    imageAlt: "Two students studying together at a laptop",
+    enabled: true,
+  },
+  {
+    id: "sales-ai",
+    title: "Sales & AI Platforms",
     description:
-      "SaaS MVP development with a clear scope and a defined end date, then room to grow as users do.",
-    href: "/services/custom-software-development",
-    image: "/brand/industries/mvps-saas.jpg",
-    imageAlt: "SaaS product dashboard for compliance training",
+      "Payments, back-end development and AI features (RAG, LLMs) for sales platforms.",
+    href: "/services/ai-solutions",
+    image: "/brand/industries/sales-ai-platforms.webp",
+    imageAlt: "Team reviewing a dashboard together on a laptop",
     enabled: true,
   },
   {
     id: "healthcare",
     title: "Healthcare",
-    description:
-      "Portals, scheduling, and care workflows for clinics and healthcare products.",
+    description: "Software for healthcare products.",
     href: "/services/custom-software-development",
-    image: "/brand/industries/healthtech-care.jpg",
-    imageAlt: "Healthcare app shown across laptop, phone, and smartwatch",
-    enabled: true,
-  },
-  {
-    id: "travel",
-    title: "Travel & Tourism",
-    description:
-      "Booking platforms and travel experiences that help guests discover, plan, and go.",
-    href: "/services/web-application-development",
-    image: "/brand/industries/travel-tourism.jpg",
-    imageAlt: "Travel app on a phone with a passport, suitcase, and boarding pass",
-    enabled: true,
-  },
-  {
-    id: "ecommerce",
-    title: "E-Commerce",
-    description:
-      "Storefronts, checkout flows, and commerce systems designed to convert and grow with demand.",
-    href: "/services/web-application-development",
-    image: "/brand/industries/ecommerce-shop.jpg",
-    imageAlt: "Mobile shopping app surrounded by bags, boxes, and a cart",
+    image: "/brand/industries/healthcare.webp",
+    imageAlt: "Doctor reviewing a brain scan on a tablet",
     enabled: true,
   },
   {
     id: "on-demand",
     title: "On-Demand",
     description:
-      "Marketplace and service platforms that connect customers with providers in real time.",
-    href: "/industries/on-demand",
-    image: "/brand/industries/on-demand/rider-night.jpg",
-    imageAlt: "Delivery rider on a scooter speeding through a city at night",
+      "Booking and marketplace apps that connect customers with providers in real time.",
+    href: "/services/mobile-app-development",
+    image: "/brand/industries/on-demand-delivery.webp",
+    imageAlt: "Delivery rider on a scooter in a city at night",
     enabled: true,
-  },
-  {
-    id: "logistics",
-    title: "Logistics",
-    description:
-      "Ops software for inventory, fulfillment, and supply chains that need to move without friction.",
-    href: "/services/custom-software-development",
-    image: "/brand/industries/logistics-shipping.jpg",
-    imageAlt: "Shipping boxes, map routes, and port logistics at sunset",
-    enabled: siteFacts.industries.showLogistics,
   },
 ];
 

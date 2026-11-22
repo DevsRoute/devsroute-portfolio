@@ -42,6 +42,19 @@ const securityHeaders = [
   { key: "X-DNS-Prefetch-Control", value: "on" },
 ];
 
+/** Slugs of the old portfolio pages that were removed — permanently redirected to /work. */
+const removedProjectSlugs = [
+  "ai-compliance-training",
+  "conversational-ai-messaging",
+  "identity-verification-kyc",
+  "social-recipe-app",
+  "community-social-network",
+  "learning-platform",
+  "travel-website",
+  "directory-website",
+  "small-business-website",
+] as const;
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
@@ -51,6 +64,18 @@ const nextConfig: NextConfig = {
     // Only local images are optimised; no remote hosts are allowed.
     remotePatterns: [],
     dangerouslyAllowSVG: false,
+  },
+  /** Old portfolio pages that were not our work: permanently (308) redirect to /work. */
+  async redirects() {
+    return [
+      ...removedProjectSlugs.map((slug) => ({
+        source: `/work/${slug}`,
+        destination: "/work",
+        permanent: true,
+      })),
+      // On-demand industry page removed: no real project work behind it.
+      { source: "/industries/on-demand", destination: "/", permanent: true },
+    ];
   },
   async headers() {
     return [

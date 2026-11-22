@@ -2,12 +2,15 @@ import type { Metadata } from "next";
 
 import { AiNative } from "@/components/home/AiNative";
 import { ClientStories } from "@/components/home/ClientStories";
+import { ClientLogos } from "@/components/home/ClientLogos";
 import { ContactCta } from "@/components/home/ContactCta";
 import { FaqSection } from "@/components/home/FaqSection";
 import { Hero } from "@/components/home/Hero";
 import { IndustryDomains } from "@/components/home/IndustryDomains";
 import { OurServices } from "@/components/home/OurServices";
+// PRICING (paused): import { PricingPreview } from "@/components/home/PricingPreview";
 import { ProjectsDelivered } from "@/components/home/ProjectsDelivered";
+import { ScopeNote } from "@/components/home/ScopeNote";
 import { TechMarquee } from "@/components/home/TechMarquee";
 import { TrustProof } from "@/components/home/TrustProof";
 import {
@@ -55,11 +58,6 @@ function HomeJsonLd() {
         description:
           "Remote software studio helping startups and B2B founders ship SaaS MVPs and AI products.",
         slogan: "SaaS MVPs and AI products with a clear scope and a defined end date.",
-        founder: siteFacts.founders.map((f) => ({
-          "@type": "Person",
-          name: f.name,
-          jobTitle: f.role,
-        })),
         contactPoint: {
           "@type": "ContactPoint",
           contactType: "sales",
@@ -76,7 +74,7 @@ function HomeJsonLd() {
           "UI/UX design",
           "Cloud and DevOps",
         ],
-        ...(sameAs.length ? { sameAs } : {}),
+        sameAs,
       },
       {
         "@type": "WebSite",
@@ -114,12 +112,15 @@ export default function Home() {
     <main className="flex-1">
       <HomeJsonLd />
       <Hero />
+      <ClientLogos />
       <IndustryDomains />
       <OurServices />
       <AiNative />
       <TechMarquee />
       <TrustProof />
       <ProjectsDelivered />
+      {/* PRICING (paused): <PricingPreview /> */}
+      <ScopeNote />
       <ClientStories />
       <FaqSection />
       <ContactCta />

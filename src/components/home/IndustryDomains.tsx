@@ -98,8 +98,8 @@ export function IndustryDomains() {
           </div>
 
           <p className="max-w-md text-sm leading-7 text-ink-500 sm:text-base sm:leading-8 lg:absolute lg:left-1/2 lg:max-w-[18rem] lg:-translate-x-1/2 lg:text-center">
-            SaaS, AI, healthcare, travel, commerce, and on-demand.
-            Software that fits how the business works.
+            Real estate and construction, education, sales and AI platforms,
+            healthcare, and on-demand.
           </p>
 
           <div className="flex shrink-0 items-center gap-2">

@@ -3,7 +3,7 @@ export const aboutCapabilities = [
   "Web Development",
   "SaaS Development",
   "Mobile Applications",
-  "eCommerce",
+  "Marketplaces",
   "AI & Automation",
   "API & Backend Development",
   "Product Maintenance",

@@ -25,16 +25,6 @@ export type Testimonial = {
   permission: boolean;
 };
 
-export type Founder = {
-  id: string;
-  name: string;
-  role: "Co-Founder";
-  /** Path under /public — replace placeholders when photos are ready */
-  photo: string;
-  photoAlt: string;
-  bio?: string;
-};
-
 export const siteFacts = {
   companyName: "DevsRoute",
   email: "contact@devsroute.com",
@@ -70,13 +60,10 @@ export const siteFacts = {
 
   /** Industry card visibility */
   industries: {
-    showOnDemand: false,
     showHealthTech: false,
     showLogistics: false,
   },
 
-  /** Concept / sample portfolio projects (FlowDesk etc.) */
-  showConcepts: false,
 
   /**
    * Real testimonials with permission. Empty = hide ClientStories entirely.
@@ -89,30 +76,6 @@ export const siteFacts = {
   /** US working-hours overlap — replace when confirmed */
   usTimeOverlap:
     TODO_CONFIRM as string | TodoConfirm /* e.g. "9am–1pm ET overlap, Mon–Fri" */,
-
-  founders: [
-    {
-      id: "zubair",
-      name: "Zubair Ahmad",
-      role: "Co-Founder",
-      photo: "/brand/team/zubair.jpg",
-      photoAlt: "Zubair Ahmad, DevsRoute co-founder",
-    },
-    {
-      id: "saboor",
-      name: "Saboor Shahzad",
-      role: "Co-Founder",
-      photo: "/brand/team/saboor.jpg",
-      photoAlt: "Saboor Shahzad, DevsRoute co-founder",
-    },
-    {
-      id: "haris",
-      name: "Haris Awais",
-      role: "Co-Founder",
-      photo: "/brand/team/haris.jpg",
-      photoAlt: "Haris Awais, DevsRoute co-founder",
-    },
-  ] satisfies Founder[],
 
   /** Do not claim these unless true */
   certifications: {
@@ -199,9 +162,10 @@ export function getSafeImpactClaims(): { id: string; value: string; label: strin
   return items;
 }
 
+/** Organization JSON-LD `sameAs`. The company LinkedIn page is always included. */
 export function getOrganizationSameAs(): string[] {
   return [
-    siteFacts.social.linkedin,
+    "https://www.linkedin.com/company/devsroute/",
     siteFacts.social.upwork,
     siteFacts.social.clutch,
   ].filter(isConfirmed);

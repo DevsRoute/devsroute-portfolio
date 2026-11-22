@@ -16,7 +16,7 @@ const processSteps = [
   },
   {
     title: "Build",
-    body: "We build in small pieces with a demo every week.",
+    body: "We build in short milestones, with a demo every week.",
   },
   {
     title: "Launch",

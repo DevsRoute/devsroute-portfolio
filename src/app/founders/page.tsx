@@ -83,7 +83,7 @@ export default function FoundersPage() {
           </h2>
           <p className="mt-4 text-base leading-8 text-ink-500">
             Hiring a full team takes attention away from the product. You need
-            a small senior team, a clear scope, and a defined end date.
+            a senior team, a clear scope, and a defined end date.
           </p>
         </div>
       </section>

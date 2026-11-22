@@ -30,7 +30,7 @@ export function renderMarkdown(text: string): ReactNode {
           );
         }
 
-        // empty line → small gap
+        // empty line → short gap
         if (!trimmed) {
           return <div key={li} className="h-1" />;
         }
