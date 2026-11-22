@@ -9,7 +9,7 @@ import { calendlyHref, services, siteConfig } from "@/lib/site-config";
 const companyLinks = [
   { label: "About", href: "/about" },
   { label: "Work", href: "/work" },
-  { label: "Pricing", href: "/pricing" },
+  // PRICING (paused): { label: "Pricing", href: "/pricing" },
   { label: "Technologies", href: "/technologies" },
   { label: "Approach", href: "/approach" },
   { label: "For founders", href: "/founders" },

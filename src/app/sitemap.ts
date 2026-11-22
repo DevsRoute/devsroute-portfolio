@@ -33,7 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     page("/", 1, "weekly"),
     page("/founders", 0.9, "monthly"),
     page("/ai-features", 0.9, "monthly"),
-    page("/pricing", 0.9, "monthly"),
+    // PRICING (paused): page("/pricing", 0.9, "monthly"),
     page("/work", 0.85, "monthly"),
     page("/about", 0.8, "monthly"),
     page("/industries/on-demand", 0.8, "monthly"),

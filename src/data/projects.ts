@@ -55,7 +55,6 @@ export const projects: Project[] = [
     summary:
       "A French marketplace for buying and selling building permits, built from scratch in about six weeks.",
     liveUrl: "https://permis-connect.fr",
-    // screenshot: { src: "/work/permis-connect/home.webp", width: 1600, height: 1000, alt: "Permis Connect marketplace home page" },
     caseStudy: {
       client: [
         "Permis Connect is a French marketplace where people buy and sell building permits.",
@@ -72,6 +71,12 @@ export const projects: Project[] = [
         "TODO: ask Saboor — any results we are allowed to share (for example usage, listings or client feedback)?",
       ],
     },
+    screenshot: {
+      src: "/work/permis-connect/home.webp",
+      width: 1600,
+      height: 884,
+      alt: "Permis Connect marketplace home page",
+    },
     order: 1,
   },
   {
@@ -81,6 +86,12 @@ export const projects: Project[] = [
     label: "Full build",
     summary: "The full website build for a custom home builder in Missouri, USA.",
     liveUrl: "https://edgehomebuilders.com",
+    screenshot: {
+      src: "/work/edge-home-builders/home.webp",
+      width: 1600,
+      height: 821,
+      alt: "Edge Home Builders website home page",
+    },
     order: 2,
   },
   {
@@ -90,6 +101,12 @@ export const projects: Project[] = [
     label: "Full build",
     summary: "A French peer-tutoring marketplace, built end to end.",
     liveUrl: "https://tutor-edge.com",
+    screenshot: {
+      src: "/work/tutor-edge/home.webp",
+      width: 1600,
+      height: 890,
+      alt: "Tutor-Edge peer-tutoring marketplace home page",
+    },
     order: 3,
   },
   {
@@ -100,6 +117,12 @@ export const projects: Project[] = [
     summary:
       "We built the Stripe payment gateway, pricing and invoicing inside AICRO's AI sales platform.",
     liveUrl: "https://aicro.co",
+    screenshot: {
+      src: "/work/aicro/home.webp",
+      width: 1600,
+      height: 887,
+      alt: "AICRO website home page",
+    },
     order: 4,
   },
   {
@@ -125,6 +148,12 @@ export const projects: Project[] = [
         "TODO: ask Saboor — any results we are allowed to share?",
       ],
     },
+    screenshot: {
+      src: "/work/success-ai/home.webp",
+      width: 1600,
+      height: 890,
+      alt: "Success.ai home page",
+    },
     order: 5,
   },
   {
@@ -134,6 +163,12 @@ export const projects: Project[] = [
     label: "Our part: front end and UI/UX design",
     summary: "Front-end development and UI/UX design for Post Oak Group.",
     liveUrl: "https://postoakgroup.co",
+    screenshot: {
+      src: "/work/post-oak-group/home.webp",
+      width: 1600,
+      height: 888,
+      alt: "Post Oak Group website home page",
+    },
     order: 6,
   },
   {
@@ -143,6 +178,12 @@ export const projects: Project[] = [
     label: "Our part: back-end development",
     summary: "Back-end development for Prisma Group.",
     liveUrl: "https://prisma-group.ch",
+    screenshot: {
+      src: "/work/prisma-group/home.webp",
+      width: 1600,
+      height: 894,
+      alt: "Prisma Group website home page",
+    },
     order: 7,
   },
 ];

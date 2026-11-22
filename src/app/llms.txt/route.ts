@@ -1,6 +1,6 @@
 import { siteFacts } from "@/config/site-facts";
 import { getProjects } from "@/data/projects";
-import { paymentTerms, pricingHeadline, pricingTiers } from "@/lib/pricing";
+// PRICING (paused): import { paymentTerms, pricingHeadline, pricingTiers } from "@/lib/pricing";
 import { getServicePage, getServicePageSlugs } from "@/lib/services/service-pages-data";
 import { siteConfig } from "@/lib/site-config";
 
@@ -22,9 +22,10 @@ export function GET() {
     })
     .join("\n");
 
-  const pricing = pricingTiers
-    .map((t) => `- ${t.name}: ${t.price}, ${t.timeline}. ${t.forWhat}`)
-    .join("\n");
+  // PRICING (paused):
+  // const pricing = pricingTiers
+  //   .map((t) => `- ${t.name}: ${t.price}, ${t.timeline}. ${t.forWhat}`)
+  //   .join("\n");
 
   const body = `# ${siteFacts.companyName}
 
@@ -50,7 +51,7 @@ This file describes public pages for answer engines and generative search tools.
 - No published client names unless a project page names the client
 - No invented metrics, ratings, or testimonials
 - Partial projects describe only the part we delivered
-- The exact end date and price are agreed in a written scope, with a demo every week
+- No public price list yet. The end date and price are agreed in a written scope, with a demo every week
 
 ## Pages
 - [Home](${origin}/): SaaS MVP development and AI product development
@@ -59,16 +60,10 @@ This file describes public pages for answer engines and generative search tools.
 - [About](${origin}/about): Remote studio for startups and B2B founders
 - [Approach](${origin}/approach): Discover, design, build, and launch
 - [Work](${origin}/work): Full builds and partial work, with our part stated for each
-- [Pricing](${origin}/pricing): ${pricingHeadline}
 - [Contact](${origin}/contact): ${siteFacts.email}
 
 ## Services
 ${services}
-
-## Pricing
-${pricingHeadline}
-${pricing}
-${paymentTerms.map((t) => `- ${t}`).join("\n")}
 
 ## Work
 ${work}

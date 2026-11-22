@@ -53,7 +53,8 @@ function getAssistantReply(question: string) {
     q.includes("timeline") ||
     q.includes("how soon")
   ) {
-    return "Starter projects take 1–4 weeks and a first version typically takes 4–8 weeks. The exact end date is agreed on the first call, and there is a demo every week.";
+    // PRICING (paused): "Starter projects take 1–4 weeks and a first version typically takes 4–8 weeks. The exact end date is agreed on the first call, and there is a demo every week."
+    return "It depends on scope. The end date is agreed on the first call, and there is a demo every week.";
   }
 
   if (q.includes("mvp") || q.includes("startup") || q.includes("idea")) {
@@ -69,7 +70,8 @@ function getAssistantReply(question: string) {
   }
 
   if (q.includes("price") || q.includes("cost") || q.includes("budget")) {
-    return "Projects start from $1,000. First versions typically from $5,000. See the pricing page, or ask for a free one-page scope.";
+    // PRICING (paused): "Projects start from $1,000. First versions typically from $5,000. See the pricing page, or ask for a free one-page scope."
+    return "Pricing depends on scope. Ask for a free one-page scope and we'll send a timeline and an estimate.";
   }
 
   return "Great question. DevsRoute helps startups and B2B founders with SaaS MVP development and AI product development. Ask about a service or your product idea, or open “Let’s talk” to connect with the team.";

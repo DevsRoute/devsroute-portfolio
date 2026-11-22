@@ -1,3 +1,8 @@
+/**
+ * PRICING (paused) — this page is switched off. The `_pricing` folder is private in
+ * the App Router, so no /pricing route is built. To turn it back on: rename the
+ * folder to `pricing`, and uncomment every line marked "PRICING (paused)".
+ */
 import type { Metadata } from "next";
 
 import { PricingTiers } from "@/components/pricing/PricingTiers";

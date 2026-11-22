@@ -7,7 +7,7 @@ import { FaqSection } from "@/components/home/FaqSection";
 import { Hero } from "@/components/home/Hero";
 import { IndustryDomains } from "@/components/home/IndustryDomains";
 import { OurServices } from "@/components/home/OurServices";
-import { PricingPreview } from "@/components/home/PricingPreview";
+// PRICING (paused): import { PricingPreview } from "@/components/home/PricingPreview";
 import { ProjectsDelivered } from "@/components/home/ProjectsDelivered";
 import { TechMarquee } from "@/components/home/TechMarquee";
 import { TrustProof } from "@/components/home/TrustProof";
@@ -116,7 +116,7 @@ export default function Home() {
       <TechMarquee />
       <TrustProof />
       <ProjectsDelivered />
-      <PricingPreview />
+      {/* PRICING (paused): <PricingPreview /> */}
       <ClientStories />
       <FaqSection />
       <ContactCta />
