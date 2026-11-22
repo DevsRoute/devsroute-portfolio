@@ -181,7 +181,7 @@ export const projects: Project[] = [
       height: 888,
       alt: "Post Oak Group website home page",
     },
-    logo: { src: "/clients/post-oak-group.webp", width: 424, height: 96, displayHeight: 34 },
+    logo: { src: "/clients/post-oak-group-dark.webp", width: 424, height: 96, displayHeight: 34 },
     order: 5,
   },
   {

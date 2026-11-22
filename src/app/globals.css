@@ -308,6 +308,33 @@
   }
 }
 
+/* Client logo marquee — track holds the list in two identical halves, slides -50% */
+.client-marquee-track {
+  width: max-content;
+  animation: tech-marquee-x 40s linear infinite;
+  will-change: transform;
+}
+
+.client-marquee:hover .client-marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .client-marquee {
+    mask-image: none;
+  }
+  .client-marquee-track {
+    animation: none;
+    width: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 2rem;
+  }
+  .client-marquee-track li:not([data-copy="0"]) {
+    display: none;
+  }
+}
+
 /* AI-native section */
 @keyframes ai-tab-progress {
   from {
